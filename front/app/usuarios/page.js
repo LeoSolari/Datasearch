@@ -4,7 +4,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-const page = () => {
+const Page = () => {
   const dispatch = useDispatch();
 
   const status = useSelector((state) => state.users.status);
@@ -111,4 +111,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

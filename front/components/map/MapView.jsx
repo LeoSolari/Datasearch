@@ -1,3 +1,5 @@
+"use client";
+import { useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility";
@@ -5,6 +7,15 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import Link from "next/link";
 
 const MapView = ({ markers }) => {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      import("leaflet-defaulticon-compatibility");
+      import(
+        "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css"
+      );
+    }
+  }, []);
+
   if (!markers || markers.length === 0) {
     return <div>No hay marcadores disponibles</div>;
   }

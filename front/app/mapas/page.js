@@ -1,11 +1,12 @@
-"use client";
+/*
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import MapView from "@/components/map/MapView";
 import { fetchWells } from "@/redux/slices/wellSlice";
 import Link from "next/link";
-
+*/
 const Page = () => {
+  /*
   const dispatch = useDispatch();
   const [wellMarkers, setWellMarkers] = useState([]);
 
@@ -24,19 +25,24 @@ const Page = () => {
     };
     fetchData();
   }, [dispatch]);
-
+*/
   return (
-    <div className=" mx-auto px-4 py-24 bg-gray-900 text-blue-200">
+    <div className="p-24">
+      <p>Page still in progress. . .</p>
+    </div>
+    /*
+    
+    <div className="mx-auto px-4 py-24 bg-gray-900 text-blue-200">
       <div className="text-center">
         <h1 className="text-3xl font-bold mb-4">Mapas</h1>
         <p className="text-lg mb-4">
-          ¡Hola! Esta es una pagina que muestra las coordenadas recibidas de la
+          ¡Hola! Esta es una página que muestra las coordenadas recibidas de la
           base de datos.
         </p>
       </div>
 
-      <div className="flex justify-around bg-white rounded-lg shadow-md overflow-hidden ">
-        <MapView markers={wellMarkers} />
+      <div className="flex justify-around bg-white rounded-lg shadow-md overflow-hidden">
+        {typeof window !== "undefined" && <MapView markers={wellMarkers} />}
         <ul className="flex justify-between flex-col text-center">
           <li className="text-gray-700 hover:underline underline-offset-8">
             <Link href={"/openWorks/wellHeaders/203"}>
@@ -66,6 +72,7 @@ const Page = () => {
         </ul>
       </div>
     </div>
+    */
   );
 };
 

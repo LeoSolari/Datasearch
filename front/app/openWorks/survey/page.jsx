@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import { fetchSurvey } from "@/redux/slices/surveySlice";
 
-const page = () => {
+const Page = () => {
   const dispatch = useDispatch();
   const surveyData = useSelector((state) => state.survey.survey);
 
@@ -72,4 +72,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
