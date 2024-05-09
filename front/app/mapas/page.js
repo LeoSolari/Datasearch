@@ -26,7 +26,7 @@ const Page = () => {
   }, [dispatch]);
 
   return (
-    <div className="container mx-auto px-4 py-20">
+    <div className=" mx-auto px-4 py-24 bg-gray-900 text-blue-200">
       <div className="text-center">
         <h1 className="text-3xl font-bold mb-4">Mapas</h1>
         <p className="text-lg mb-4">
@@ -35,23 +35,33 @@ const Page = () => {
         </p>
       </div>
 
-      <div className="flex justify-around bg-white rounded-lg shadow-md overflow-hidden">
+      <div className="flex justify-around bg-white rounded-lg shadow-md overflow-hidden ">
         <MapView markers={wellMarkers} />
         <ul className="flex justify-between flex-col text-center">
           <li className="text-gray-700 hover:underline underline-offset-8">
-            <Link href={"/datos/203"}>Ir al pozo UWI: AR580121000100</Link>
+            <Link href={"/openWorks/wellHeaders/203"}>
+              Ir al pozo UWI: AR580121000100
+            </Link>
           </li>
           <li className="text-gray-700 hover:underline underline-offset-8">
-            <Link href={"/datos/1881"}>Ir al pozo UWI: AR580352101100</Link>
+            <Link href={"/openWorks/wellHeaders/1881"}>
+              Ir al pozo UWI: AR580352101100
+            </Link>
           </li>
           <li className="text-gray-700 hover:underline underline-offset-8">
-            <Link href={"/datos/58"}>Ir al pozo UWI: AR580061043200</Link>
+            <Link href={"/openWorks/wellHeaders/58"}>
+              Ir al pozo UWI: AR580061043200
+            </Link>
           </li>
           <li className="text-gray-700 hover:underline underline-offset-8">
-            <Link href={"/datos/75"}>Ir al pozo UWI: AR580070000100</Link>
+            <Link href={"/openWorks/wellHeaders/75"}>
+              Ir al pozo UWI: AR580070000100
+            </Link>
           </li>
           <li className="text-gray-700 hover:underline underline-offset-8">
-            <Link href={"/datos/605"}>Ir al pozo UWI: AR620033000200</Link>
+            <Link href={"/openWorks/wellHeaders/605"}>
+              Ir al pozo UWI: AR620033000200
+            </Link>
           </li>
         </ul>
       </div>

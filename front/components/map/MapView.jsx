@@ -25,7 +25,7 @@ const MapView = ({ markers }) => {
         <Marker key={marker.uwi} position={[marker.lat, marker.long]}>
           <Popup>
             <Link
-              href={`/datos/${marker.id}`}
+              href={`/openWorks/wellHeaders/${marker.id}`}
               className="text-blue-500 hover:underline"
             >
               UWI: {marker.uwi}

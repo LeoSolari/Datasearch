@@ -6,12 +6,14 @@ import Link from "next/link";
 
 const Login = () => {
   return (
-    <div className="bg-gradient-to-br h-screen from-gray-900 to-gray-800 text-white rounded-lg overflow-hidden">
+    <div className="pt-8 bg-gradient-to-br h-screen from-gray-900 to-gray-800 text-white rounded-lg overflow-hidden">
       <div className="pt-16">
-        <p className="text-4xl font-semibold text-center">Welcome Back!</p>
+        <p className="text-4xl font-semibold text-center">Bienvenido!</p>
       </div>
       <div className="py-8">
-        <p className="text-lg text-center">Sign in to access your account</p>
+        <p className="text-lg text-center">
+          Usa tus credenciales para acceder a tu cuenta
+        </p>
       </div>
       <div>
         <div>
@@ -37,23 +39,23 @@ const Login = () => {
                 ) */}
 
             <p className="text-sm text-gray-400 text-right mb-4 hover:text-blue-500 cursor-pointer">
-              Forgot your password?
+              Te olvidaste tu contraseña?
             </p>
 
             <button className="w-full bg-blue-500 text-white py-3 rounded hover:bg-blue-600 transition duration-300 ease-in-out">
-              Login
+              Ingresar
             </button>
           </form>
         </div>
       </div>
       <div>
         <div className="flex justify-center py-4">
-          <p className="text-gray-400">Don't have an account?</p>
+          <p className="text-gray-400">No tienes cuenta?</p>
           <Link
             href={"/signup"}
             className="text-blue-400 font-bold cursor-pointer ml-2 hover:text-blue-500"
           >
-            Sign up here
+            Registrate aqui!
           </Link>
         </div>
       </div>

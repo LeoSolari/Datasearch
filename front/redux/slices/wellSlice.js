@@ -3,7 +3,7 @@ import axios from "axios";
 
 // Acción asincrónica para obtener pozos
 export const fetchWells = createAsyncThunk("wells/getWells", async () => {
-  const response = await axios.get("http://localhost:3000/api/wells");
+  const response = await axios.get("http://localhost:4000/api/wells");
   return response.data;
 });
 
@@ -12,7 +12,7 @@ export const fetchWellById = createAsyncThunk(
   "wells/getWellById",
   async (wellId) => {
     const response = await axios.get(
-      `http://localhost:3000/api/wells/${wellId}`
+      `http://localhost:4000/api/wells/${wellId}`
     );
     return response.data;
   }

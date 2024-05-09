@@ -1,33 +1,24 @@
-import Link from "next/link";
-import Button from "@/components/Button";
+"use client";
+import Contact from "@/components/templates/Contact";
+import Solution from "@/components/templates/Solution";
+import Footer from "@/components/templates/Footer";
+import RouteLinks from "@/components/templates/RouteLinks";
+import Quote from "@/components/templates/Quote";
+import Header from "@/components/templates/Header";
 
 const Home = () => (
-  <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
-    <h1 className="text-4xl font-bold mb-8 text-center text-blue-600">Home</h1>
-    <div className="flex justify-around w-full mb-8">
-      <Link href="/usuarios">
-        <Button className="w-48 h-20 text-lg bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
-          Ver Usuarios
-        </Button>
-      </Link>
-      <Link href="/mapas">
-        <Button className="w-48 h-20 text-lg bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
-          Ver Mapas
-        </Button>
-      </Link>
-    </div>
-    <div className="flex justify-around w-full">
-      <Link href="/bases">
-        <Button className="w-48 h-20 text-lg bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
-          Ver Bases
-        </Button>
-      </Link>
-      <Link href="/datos">
-        <Button className="w-48 h-20 text-lg bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
-          Ver Datos
-        </Button>
-      </Link>
-    </div>
+  <div className="app__bg flex flex-col items-center justify-center h-full  pt-12">
+    <Header />
+
+    <Solution />
+
+    <Quote />
+
+    <RouteLinks />
+
+    <Contact />
+
+    <Footer />
   </div>
 );
 

@@ -3,13 +3,13 @@ import Link from "next/link";
 
 const SignUp = () => {
   return (
-    <div className="bg-gradient-to-br h-screen from-gray-900 to-gray-800 text-white rounded-lg overflow-hidden">
+    <div className="bg-gradient-to-br pt-8 h-screen from-gray-900 to-gray-800 text-white rounded-lg overflow-hidden">
       <div className="pt-16">
-        <p className="text-4xl font-semibold text-center">Create an Account</p>
+        <p className="text-4xl font-semibold text-center">Crea una Cuenta!</p>
       </div>
       <div className="py-8">
         <p className="text-lg text-center">
-          Join us and unlock exclusive features
+          Crea tu cuenta y ve los beneficios exclusivos que puedes desbloquear
         </p>
       </div>
       <div>
@@ -36,19 +36,19 @@ const SignUp = () => {
               ) */}
 
             <button className="w-full bg-blue-500 text-white py-3 rounded hover:bg-blue-600 transition duration-300 ease-in-out">
-              Sign Up
+              Registrarse
             </button>
           </form>
         </div>
       </div>
       <div>
         <div className="flex justify-center py-4">
-          <p className="text-gray-400">Already have an account?</p>
+          <p className="text-gray-400">Ya tienes una cuenta?</p>
           <Link
             href={"/login"}
             className="text-blue-400 font-bold cursor-pointer ml-2 hover:text-blue-500"
           >
-            Sign In
+            Ingresar
           </Link>
         </div>
       </div>

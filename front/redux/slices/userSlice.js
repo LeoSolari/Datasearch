@@ -3,7 +3,7 @@ import axios from "axios";
 
 // Acción asincrónica para obtener usuarios
 export const fetchUsers = createAsyncThunk("users/getUsers", async () => {
-  const response = await axios.get("http://localhost:3000/api/users");
+  const response = await axios.get("http://localhost:4000/api/users");
   return response.data;
 });
 
@@ -12,7 +12,7 @@ export const createUser = createAsyncThunk(
   "users/createUser",
   async (userData) => {
     const response = await axios.post(
-      "http://localhost:3000/api/users",
+      "http://localhost:4000/api/users",
       userData
     );
     return response.data;

@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import Providers from "@/redux/provider";
-import Navbar from "@/components/NavBar";
+import Navbar from "@/components/templates/NavBar";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });

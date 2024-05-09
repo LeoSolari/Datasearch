@@ -13,8 +13,8 @@ const WellDetails = ({ singleWell }) => {
     <div className="grid grid-cols-2 gap-4 text-center">
       {wellDetails.map((detail, index) => (
         <div key={index} className="flex flex-col">
-          <span className="text-gray-600">{detail.label.toUpperCase()}</span>
-          <span className="font-semibold">
+          <span className="text-gray-400">{detail.label.toUpperCase()}</span>
+          <span className="font-semibold text-gray-200">
             {detail.value ? detail.value : "No data yet."}
           </span>
         </div>

@@ -61,17 +61,14 @@ const page = () => {
   console.log(usersData);
 
   return (
-    <div className="py-20">
+    <div className="py-24 bg-gray-900 text-blue-200">
       <div>
         <p className="text-xl text-center">Datos traidos de BDD</p>
       </div>
       <div className="p-4">
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="name" className="block text-sm font-medium ">
               Nombre:
             </label>
             <input
@@ -80,25 +77,10 @@ const page = () => {
               name="name"
               value={name}
               onChange={handleNameChange}
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 p-2 block w-full border text-black bg-slate-400 border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
-          <div className="mb-4">
-            <label
-              htmlFor="salary"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Salario:
-            </label>
-            <input
-              type="text"
-              id="salary"
-              name="salary"
-              value={salary}
-              onChange={handleSalaryChange}
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-            />
-          </div>
+
           <button
             type="submit"
             className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
@@ -117,9 +99,10 @@ const page = () => {
               <p>Nomber</p>
               <p className="text-lg font-semibold">{el.name}</p>
             </div>
+
             <div>
-              <p>Salario</p>
-              <p className="text-gray-500">{el.salary}</p>
+              <p>ID</p>
+              <p className="text-gray-500">{el.id}</p>
             </div>
           </div>
         ))}
