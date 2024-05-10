@@ -4,7 +4,7 @@ const sqlite3 = require("sqlite3").verbose();
 
 exports.getAllWells = (req, res) => {
   const db = new sqlite3.Database(
-    process.env.DB_PATH_NEUQUINA_REG,
+    process.env.DB_PATH_ORIG,
     sqlite3.OPEN_READWRITE,
     (err) => {
       if (err) {
@@ -34,7 +34,7 @@ exports.getWellById = (req, res) => {
   const wellId = req.params.wellId;
 
   const db = new sqlite3.Database(
-    process.env.DB_PATH_NEUQUINA_REG,
+    process.env.DB_PATH_ORIG,
     sqlite3.OPEN_READWRITE,
     (err) => {
       if (err) {
