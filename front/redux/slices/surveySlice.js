@@ -2,7 +2,9 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchSurvey = createAsyncThunk("survey/getSurvey", async () => {
-  const response = await axios.get("http://localhost:4000/api/surveys");
+  const response = await axios.get(
+    "https://datasearch-server-1.onrender.com/api/surveys"
+  );
   return response.data;
 });
 
@@ -11,7 +13,7 @@ export const fetchSurveyById = createAsyncThunk(
   "surveys/getSurveyById",
   async (surveyId) => {
     const response = await axios.get(
-      `http://localhost:4000/api/surveys/${surveyId}`
+      `https://datasearch-server-1.onrender.com/api/surveys/${surveyId}`
     );
     return response.data;
   }

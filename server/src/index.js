@@ -20,7 +20,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN, // Permitir solicitudes solo desde este origen
+    origin: "*", // Permitir solicitudes solo desde este origen
   })
 );
 

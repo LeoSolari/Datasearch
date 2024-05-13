@@ -3,6 +3,8 @@ const sqlite3 = require("sqlite3").verbose();
 
 // LOG_CURVE_HEADER
 
+console.log("ASd");
+
 exports.getAllLogCurves = (req, res) => {
   const db = new sqlite3.Database(
     process.env.DB_PATH_ORIG,
