@@ -11,7 +11,7 @@ const Solution = () => {
       </h1>
       <motion.div
         variants={fadeIn("up", "tween", 0.4, 1.5)}
-        className="flex justify-around p-12 text-center"
+        className="flex flex-col lg:flex-row lg:justify-around p-12 text-center"
       >
         <div className="p-4">
           <h1 className="text-xl pb-4">Busqueda eficiente.</h1>

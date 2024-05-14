@@ -18,11 +18,7 @@ const indexRoutes = require("./routes/index.routes.js");
 
 const app = express();
 app.use(express.json());
-app.use(
-  cors({
-    origin: "*", // Permitir solicitudes solo desde este origen
-  })
-);
+app.use(cors());
 
 // Montado de rutas
 

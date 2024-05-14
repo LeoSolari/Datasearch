@@ -10,7 +10,9 @@ const page = () => {
       <Link className="text-yellow-500" href={"/openWorks/survey"}>
         Survey
       </Link>
-      <p>Log curve</p>
+      <Link className="text-yellow-500" href={"/openWorks/logcurve"}>
+        Log curve
+      </Link>
       <p>Surface picks</p>
     </div>
   );

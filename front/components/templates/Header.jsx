@@ -21,7 +21,8 @@ const Header = () => {
         </button>
       </div>
       <div className="app__wrapper_img">
-        <Image src={webimg} alt="Header img" />
+        {/* <Image src={webimg} alt="Header img" /> */}
+        <p className="text-white">Placeholder</p>
       </div>
     </div>
   );

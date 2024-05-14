@@ -4,9 +4,8 @@ import Image from "next/image";
 
 const Navbar = () => {
   const links = [
-    { text: "OpenWorks", ref: "/openWorks" },
-    { text: "Mapa", ref: "/mapas" },
-    { text: "Archivo Digital", ref: "/archivodigital" },
+    { text: "Login", ref: "/login" },
+    { text: "Sign up", ref: "/signup" },
   ];
 
   return (

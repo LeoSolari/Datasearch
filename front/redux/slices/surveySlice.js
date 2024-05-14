@@ -3,7 +3,8 @@ import axios from "axios";
 
 export const fetchSurvey = createAsyncThunk("survey/getSurvey", async () => {
   const response = await axios.get(
-    "https://datasearch-server-1.onrender.com/api/surveys"
+    /*"https://datasearch-server-1.onrender.com/api/surveys" */
+    "http://localhost:4000/api/surveys"
   );
   return response.data;
 });
@@ -13,7 +14,7 @@ export const fetchSurveyById = createAsyncThunk(
   "surveys/getSurveyById",
   async (surveyId) => {
     const response = await axios.get(
-      `https://datasearch-server-1.onrender.com/api/surveys/${surveyId}`
+      `http://localhost:4000/api/surveys/${surveyId}`
     );
     return response.data;
   }

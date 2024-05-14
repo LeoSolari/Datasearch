@@ -6,7 +6,7 @@ const sqlite3 = require("sqlite3").verbose();
 
 exports.getAllSurveys = (req, res) => {
   const db = new sqlite3.Database(
-    process.env.DB_PATH_ORIG,
+    process.env.DB_PATH_NEUQUINA_REG,
     sqlite3.OPEN_READWRITE,
     (err) => {
       if (err) {
@@ -37,7 +37,7 @@ exports.getAllSurveysById = (req, res) => {
   const surveyId = req.params.surveyId;
 
   const db = new sqlite3.Database(
-    process.env.DB_PATH_ORIG,
+    process.env.DB_PATH_NEUQUINA_REG,
     sqlite3.OPEN_READWRITE,
     (err) => {
       if (err) {

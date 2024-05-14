@@ -12,11 +12,11 @@ const Home = () => (
 
     <Solution />
 
-    <Quote />
+    {/* <Quote />  */}
 
     <RouteLinks />
 
-    <Contact />
+    {/* <Contact /> */}
 
     <Footer />
   </div>
