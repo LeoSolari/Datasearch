@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLogCurveById } from "@/redux/slices/logcurveSlice";
 import DataView from "@/components/map/DataView";
-import LogCurveDetails from "@/components/wellDetails/logCurveDetails";
+/*import LogCurveDetails from "@/components/wellDetails/logCurveDetails";*/
 
 const LogCurvePage = ({ params }) => {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const LogCurvePage = ({ params }) => {
               Details for Log Curve {singleLog.LOG_CURVE_ID} (Service:{" "}
               {singleLog.SERVICE_NAME})
             </h2>
-            <LogCurveDetails singleLog={singleLog} />
+            {/*    <LogCurveDetails singleLog={singleLog} />*/}
           </div>
           {/* Ignora el DataView si no es necesario */}
         </div>
