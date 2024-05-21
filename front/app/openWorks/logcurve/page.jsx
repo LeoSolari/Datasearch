@@ -1,74 +1,98 @@
 "use client";
 
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import Input from "@/components/UI/Input";
 
+import { filterById } from "../../../utils/logCurveUtils";
 import { fetchlogCurve } from "@/redux/slices/logcurveSlice";
 
 const Page = () => {
   const dispatch = useDispatch();
   const logCurveData = useSelector((state) => state.logCurve.logs);
+  const [searchTermServiceName, setSearchTermServiceName] = useState("");
+  const [searchTermLogCurveID, setSearchTermLogCurveID] = useState("");
+  const [searchTermWellId, setSearchTermWellId] = useState("");
 
   useEffect(() => {
     dispatch(fetchlogCurve());
   }, [dispatch]);
 
-  /* 
-  const uniquelogCurveData = logCurveData.reduce((acc, current) => {
-    const existingIndex = acc.findIndex(
-      (item) => item.LOG_CURVE_ID === current.LOG_CURVE_ID
+  const filteredLogCurveData = logCurveData
+    .filter(
+      (el) =>
+        el.LOG_CURVE_ID &&
+        String(el.LOG_CURVE_ID).includes(searchTermLogCurveID)
+    )
+    .filter(
+      (el) =>
+        el.SERVICE_NAME &&
+        el.SERVICE_NAME.toLowerCase().includes(
+          searchTermServiceName.toLowerCase()
+        )
+    )
+    .filter(
+      (el) => el.WELL_ID && String(el.WELL_ID).includes(searchTermWellId)
     );
-    if (existingIndex !== -1) {
-      if (current.TOP_DEPTH > acc[existingIndex].TOP_DEPTH) {
-        acc[existingIndex] = current;
-      }
-    } else {
-      acc.push(current);
-    }
-    return acc;
-  }, []);
-
-  uniquelogCurveData.sort((a, b) => a.LOG_CURVE_ID - b.LOG_CURVE_ID);
-*/
-  /*  const [searchTermName, setSearchTermName] = useState("");
-    const [searchTermUWI, setSearchTermUWI] = useState("");
-    const [searchTermCounty, setSearchTermCounty] = useState("");
-    const [searchTermField, setSearchTermField] = useState("");
-    const [searchTermWellId, setSearchTermWellId] = useState("");*/
-
-  /*
-    useEffect(() => {
-      dispatch(fetchWells());
-    }, [dispatch]);
-  
-    const filteredWellsByName = filterByName(wellsData, searchTermName);
-  
-    const filteredWellsByUWI = filterByUWI(wellsData, searchTermUWI);
-  
-    const filteredWellsByCounty = filterByCounty(wellsData, searchTermCounty);
-  
-    const filteredWellsByField = filterByField(wellsData, searchTermField);
-  
-    const filteredWellsById = filterById(wellsData, searchTermWellId);
-   */
 
   return (
-    <div className="p-24">
-      {logCurveData.map((el, i) => (
-        <div key={i} className="flex justify-around p-4">
-          <Link href={`/openWorks/logcurve/${el.LOG_CURVE_ID}`}>
-            <p className="p-4">LOG_CURVE_ID:{el.LOG_CURVE_ID}</p>
-          </Link>
-          <p className="p-4">WELL_ID: {el.WELL_ID}</p>
-          <p className="p-4">MEASURED_DEPTH: {el.MEASURED_DEPTH} </p>
-          <p className="p-4">SERVICE_NAME: {el.SERVICE_NAME} </p>
-          <p className="p-4">LOG_CRV_NAME_ID: {el.LOG_CRV_NAME_ID} </p>
-          <p className="p-4">TOTAL_SAMPLES: {el.TOTAL_SAMPLES} </p>
-          <p className="p-4">TOP_DEPTH: {el.TOP_DEPTH} </p>
-          <p className="p-4">BASE_DEPTH: {el.BASE_DEPTH} </p>
-        </div>
-      ))}
+    <div className="pt-[86px] bg-slate-900 text-white ">
+      <div className="flex justify-around pt-8 border-b-2">
+        <Input
+          placeholder="Search by well ID..."
+          value={searchTermWellId}
+          onChange={(e) => setSearchTermWellId(e.target.value)}
+        />
+
+        <Input
+          placeholder="Search by lease log ID"
+          value={searchTermLogCurveID}
+          onChange={(e) => setSearchTermLogCurveID(e.target.value)}
+        />
+
+        <Input
+          placeholder="Search by Service name"
+          value={searchTermServiceName}
+          onChange={(e) => setSearchTermServiceName(e.target.value)}
+        />
+      </div>
+
+      <div className="h-screen bg-gray-900">
+        <table className="w-full table-auto  bg-gray-900">
+          <thead className="bg-gray-900">
+            <tr className="bg-gray-900 text-gray-300 uppercase text-sm leading-normal text-center">
+              <th className="py-3 px-6 ">LOG CURVE ID</th>
+              <th className="py-3 px-6 ">WELL ID</th>
+              <th className="py-3 px-6 ">MEASURED DEPTH</th>
+              <th className="py-3 px-6 ">SERVICE NAME</th>
+              <th className="py-3 px-6 ">LOG Curve NAME ID</th>
+              <th className="py-3 px-6 ">TOTAL SAMPLES</th>
+              <th className="py-3 px-6 ">TOP DEPTH</th>
+              <th className="py-3 px-6 ">BASE DEPTH</th>
+            </tr>
+          </thead>
+          <tbody className="text-gray-300 bg-slate-900 text-sm font-light">
+            {filteredLogCurveData.map((el, i) => (
+              <tr
+                key={i}
+                className="border-b border-gray-200 hover:bg-blue-500 hover:text-blue-50 text-center"
+              >
+                <Link href={`/openWorks/logcurve/${el.LOG_CURVE_ID}`}>
+                  <td className="p-4">LOG_CURVE_ID:{el.LOG_CURVE_ID}</td>
+                </Link>
+                <td className="p-4">WELL_ID: {el.WELL_ID}</td>
+                <td className="p-4">MEASURED_DEPTH: {el.MEASURED_DEPTH} </td>
+                <td className="p-4">SERVICE_NAME: {el.SERVICE_NAME} </td>
+                <td className="p-4">LOG_CRV_NAME_ID: {el.LOG_CRV_NAME_ID} </td>
+                <td className="p-4">TOTAL_SAMPLES: {el.TOTAL_SAMPLES} </td>
+                <td className="p-4">TOP_DEPTH: {el.TOP_DEPTH} </td>
+                <td className="p-4">BASE_DEPTH: {el.BASE_DEPTH} </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

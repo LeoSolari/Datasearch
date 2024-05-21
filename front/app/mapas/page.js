@@ -1,12 +1,15 @@
-/*
+"use client";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import MapView from "@/components/map/MapView";
+import dynamic from "next/dynamic";
 import { fetchWells } from "@/redux/slices/wellSlice";
 import Link from "next/link";
-*/
+
+const MapView = dynamic(() => import("@/components/map/MapView"), {
+  ssr: false,
+});
+
 const Page = () => {
-  /*
   const dispatch = useDispatch();
   const [wellMarkers, setWellMarkers] = useState([]);
 
@@ -25,13 +28,8 @@ const Page = () => {
     };
     fetchData();
   }, [dispatch]);
-*/
+
   return (
-    <div className="p-24">
-      <p>Page still in progress. . .</p>
-    </div>
-    /*
-    
     <div className="mx-auto px-4 py-24 bg-gray-900 text-blue-200">
       <div className="text-center">
         <h1 className="text-3xl font-bold mb-4">Mapas</h1>
@@ -42,7 +40,7 @@ const Page = () => {
       </div>
 
       <div className="flex justify-around bg-white rounded-lg shadow-md overflow-hidden">
-        {typeof window !== "undefined" && <MapView markers={wellMarkers} />}
+        <MapView markers={wellMarkers} />
         <ul className="flex justify-between flex-col text-center">
           <li className="text-gray-700 hover:underline underline-offset-8">
             <Link href={"/openWorks/wellHeaders/203"}>
@@ -72,7 +70,6 @@ const Page = () => {
         </ul>
       </div>
     </div>
-    */
   );
 };
 

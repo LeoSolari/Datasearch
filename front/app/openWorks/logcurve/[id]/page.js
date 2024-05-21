@@ -2,12 +2,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLogCurveById } from "@/redux/slices/logcurveSlice";
+import DataView from "@/components/map/DataView";
+import LogCurveDetails from "@/components/wellDetails/logCurveDetails";
 
-const Page = ({ params }) => {
+const LogCurvePage = ({ params }) => {
   const dispatch = useDispatch();
   const { singleLog, status, error } = useSelector((state) => state.logCurve);
-
-  console.log(singleLog, status, error);
 
   useEffect(() => {
     if (params.id) {
@@ -24,23 +24,23 @@ const Page = ({ params }) => {
   }
 
   return (
-    <div>
-      {" "}
-      <div className="p-24">
-        {singleLog.map((log, i) => (
-          <div key={i} className="flex justify-around p-12">
-            <p className="p-2">LOG_CURVE_ID:{log.LOG_CURVE_ID}</p>
-            <p className="p-2">WELL_ID:{log.WELL_ID}</p>
-            <p className="p-2">SERVICE_NAME:{log.SERVICE_NAME}</p>
-            <p className="p-2">LOG_CRV_NAME_ID:{log.LOG_CRV_NAME_ID}</p>
-            <p className="p-2">TOTAL_SAMPLES:{log.TOTAL_SAMPLES}</p>
-            <p className="p-2">TOP_DEPTH:{log.TOP_DEPTH}</p>
-            <p className="p-2">BASE_DEPTH:{log.BASE_DEPTH}</p>
+    <div className=" mx-auto ">
+      {singleLog ? (
+        <div className="bg-gray-900 rounded-lg shadow-md overflow-hidden">
+          <div className="p-4">
+            <h2 className="text-xl font-semibold mb-16 text-center">
+              Details for Log Curve {singleLog.LOG_CURVE_ID} (Service:{" "}
+              {singleLog.SERVICE_NAME})
+            </h2>
+            <LogCurveDetails singleLog={singleLog} />
           </div>
-        ))}
-      </div>
+          {/* Ignora el DataView si no es necesario */}
+        </div>
+      ) : (
+        <div>No log curve found with ID: {params.id}</div>
+      )}
     </div>
   );
 };
 
-export default Page;
+export default LogCurvePage;

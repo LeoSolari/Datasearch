@@ -12,7 +12,7 @@ const HomeLinks = ({ buttonTitle, pText, fadeSide, position, where }) => {
     <div
       className={`flex pt-8 ${
         position ? "flex-row" : "flex-row-reverse"
-      } items-center `}
+      } items-center flex-col lg:flex-row`}
     >
       <motion.div
         variants={fadeIn(fadeSide, "tween", 0.5, 2)}
@@ -27,7 +27,7 @@ const HomeLinks = ({ buttonTitle, pText, fadeSide, position, where }) => {
       <div className="text-white">
         <motion.p
           variants={fadeIn(fadeSide, "tween", 0.5, 1.7)}
-          className="text-white"
+          className="text-white text-justify px-4"
         >
           {pText}
         </motion.p>

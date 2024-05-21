@@ -36,3 +36,5 @@ export const filterById = (wellsData, searchTerm) => {
     (well) => well.WELL_ID && String(well.WELL_ID).includes(searchTerm)
   );
 };
+
+

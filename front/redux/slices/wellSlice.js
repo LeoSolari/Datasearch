@@ -3,7 +3,7 @@ import axios from "axios";
 
 // Acción asincrónica para obtener pozos
 export const fetchWells = createAsyncThunk("wells/getWells", async () => {
-  const response = await axios.get("http://localhost:4000/api/wells");
+  const response = await axios.get("https://mongotest-1.onrender.com/wells");
   return response.data;
 });
 

@@ -5,7 +5,7 @@ import HomeLinks from "./HomeLinks";
 const RouteLinks = () => {
   return (
     <div>
-      <div className="flex justify-around w-full mb-8 flex-col pt-8">
+      <div className="flex lg:justify-around w-full mb-8  pt-8">
         <div className="flex flex-col">
           <div className="flex pt-8">
             <HomeLinks
