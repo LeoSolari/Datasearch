@@ -7,14 +7,16 @@ import Quote from "@/components/templates/Quote";
 import Header from "@/components/templates/Header";
 
 const Home = () => (
-  <div className="app__bg flex flex-col items-center justify-center h-full  pt-12">
+  <div className="bg-slate-800 flex flex-col items-center justify-center h-full">
     <Header />
+
+    <RouteLinks />
 
     <Solution />
 
     {/* <Quote />  */}
 
-    <RouteLinks />
+   
 
     {/* <Contact /> */}
 

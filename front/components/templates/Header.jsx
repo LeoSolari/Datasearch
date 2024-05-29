@@ -1,29 +1,36 @@
 import React from "react";
-import webimg from "../../images/web.jpg";
-import Image from "next/image";
+import es from "@/public/es";
+import en from "@/public/en";
+import {useSelector } from "react-redux";
 
 const Header = () => {
+
+  const isSpanish = useSelector((state) => state.language.isSpanish)
+
+  const texts = isSpanish ? es : en
+
+  const redirectionLink = () => {
+    window.open("https://phoenixglobalresources.com/", "_blank")
+  }
+
   return (
-    <div className="app__wrapper section__padding bg-black  " id="home">
-      <div className="app__wrapper_info">
+    <div className="app__wrapper section__padding bg-black w-full text-center  " id="home">
+      <div >
         <h1 className="tracking-wider uppercase leading-9 md:leading-[117px] text-[40px] md:text-[90px] font-['Cormorant_Upright'] text-[var(--color-golden)] ">
-          Bienvenido a nuestro portal
+          {texts.HeaderTitle}
         </h1>
         <p className="p__opensans my-[2rem]">
-          Explora la página y contáctanos si tienes alguna pregunta. Siéntete
-          libre de comunicarte con nosotros para obtener más información.
+        {texts.HeaderText}
         </p>
         <button
           type="button"
           className="custom__button bg-[var(--color-crimson)] "
+          onClick={redirectionLink}
         >
-          Explora nuestra web
+          {texts.HeaderButton}
         </button>
       </div>
-      <div className="app__wrapper_img">
-        {/* <Image src={webimg} alt="Header img" /> */}
-        <p className="text-white">Placeholder</p>
-      </div>
+      
     </div>
   );
 };

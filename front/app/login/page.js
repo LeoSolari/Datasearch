@@ -1,18 +1,28 @@
+'use client'
 /*import validation from "./validations";
 import { useTheme } from "../../Theme/Themecontext";
 import { useNavigate } from "react-router";
 */
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import es from "@/public/es";
+import en from "@/public/en";
+
 
 const Login = () => {
+
+  const isSpanish = useSelector((state) => state.language.isSpanish)
+
+  const texts = isSpanish ? es : en
+
   return (
     <div className="pt-8 bg-gradient-to-br h-screen from-gray-900 to-gray-800 text-white rounded-lg overflow-hidden">
       <div className="pt-16">
-        <p className="text-4xl font-semibold text-center">Bienvenido!</p>
+        <p className="text-4xl font-semibold text-center">{texts.LoginWelcome} </p>
       </div>
       <div className="py-8">
         <p className="text-lg text-center">
-          Usa tus credenciales para acceder a tu cuenta
+          {texts.LoginWelcomeText}
         </p>
       </div>
       <div>
@@ -39,23 +49,23 @@ const Login = () => {
                 ) */}
 
             <p className="text-sm text-gray-400 text-right mb-4 hover:text-blue-500 cursor-pointer">
-              Te olvidaste tu contraseña?
+             {texts.LoginForgot}
             </p>
 
             <button className="w-full bg-blue-500 text-white py-3 rounded hover:bg-blue-600 transition duration-300 ease-in-out">
-              Ingresar
+              {texts.LoginButton}
             </button>
           </form>
         </div>
       </div>
       <div>
         <div className="flex justify-center py-4">
-          <p className="text-gray-400">No tienes cuenta?</p>
+          <p className="text-gray-400">{texts.LoginForgot} </p>
           <Link
             href={"/signup"}
             className="text-blue-400 font-bold cursor-pointer ml-2 hover:text-blue-500"
           >
-            Registrate aqui!
+            {texts.LoginNoAcc}
           </Link>
         </div>
       </div>

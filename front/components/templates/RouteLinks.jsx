@@ -1,19 +1,24 @@
 "use client";
 import { SectionWrapper } from "@/hoc";
 import HomeLinks from "./HomeLinks";
+import es from "@/public/es";
+import en from "@/public/en";
+import {useSelector } from "react-redux";
 
 const RouteLinks = () => {
+
+  const isSpanish = useSelector((state) => state.language.isSpanish)
+
+  const texts = isSpanish ? es : en
+
   return (
     <div>
-      <div className="flex lg:justify-around w-full mb-8  pt-8">
+      <div className="flex lg:justify-around w-full  ">
         <div className="flex flex-col">
-          <div className="flex pt-8">
+          <div className="flex ">
             <HomeLinks
-              buttonTitle="Ver Dashboard"
-              pText=" ¡Explora nuestra base de usuarios y descubre información fascinante
-        sobre quienes interactúan con nuestra plataforma! Nuestra sección de
-        te ofrece una ventana hacia la diversidad y el
-         "
+              buttonTitle={texts.DashboardTitle}
+              pText={texts.DashboardText}
               position
               fadeSide="left"
               where="/dashboard"
@@ -22,11 +27,8 @@ const RouteLinks = () => {
 
           <div className="flex pt-8">
             <HomeLinks
-              buttonTitle="Ver mapas"
-              pText="¡Descubre nuestro fascinante mundo de mapas interactivos! Nuestra
-        sección de  te invita a explorar territoriostesoro de conocimiento que puede inspirar ideas innovadoras y
-        decisiones informadas. ¿Estás listo para descubrir las historias qu
-    "
+              buttonTitle={texts.MapsTitle}
+              pText={texts.MapsText}
               fadeSide="left"
               position
               where="/mapas"
@@ -35,12 +37,8 @@ const RouteLinks = () => {
 
           <div className="flex pt-8">
             <HomeLinks
-              buttonTitle="Ver Archivo digital"
-              pText=" ¡Explora nuestra amplia colección de datos y recursos fundamentales
-        en nuestra sección de  Desde bases de datos científicas
-       r ón profunda y perspicaz sobre una amplia gama de temas. Desde
-        datos demográficos hasta tendencias de mercado, nuestra plataforma"
-              position
+              buttonTitle={texts.ArchiveTitle}
+              pText={texts.ArchiveText}
               fadeSide="left"
               where="/archivodigital"
             />
@@ -48,16 +46,8 @@ const RouteLinks = () => {
 
           <div className="flex pt-8">
             <HomeLinks
-              buttonTitle="OpenWorks"
-              pText=" ¡Sumérgete en el fascinante mundo de los datos con nuestra sección
-        de Ver Datos! Explora conjuntos de datos detallados, gráficos
-        informativos y estadísticas impactantes que te proporcionarán una
-        visi
-        te ofrece una ventana hacia el panorama completo de información
-        relevante y actualizada. Con un simple clic, podrás acceder a un
-        e
-        los datos tienen para contarte? ¡Haz clic ahora para explorar Ver
-        Datos!"
+              buttonTitle={texts.OpenWorksTitle}
+              pText={texts.OpenWorksText}
               fadeSide="left"
               position
               where="/openWorks"

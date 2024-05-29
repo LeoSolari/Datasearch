@@ -10,7 +10,7 @@ export const fetchlogCurve = createAsyncThunk(
   }
 );
 
-// Acción asincrónica para obtener un pozo por su WELL_ID
+// Acción asincrónica para obtener un pozo por su LOG_CURVE_ID
 export const fetchLogCurveById = createAsyncThunk(
   "logcurve/getLogCurveById",
   async (logId) => {
@@ -26,33 +26,36 @@ export const logCurveSlice = createSlice({
   name: "logCurve",
   initialState: {
     logs: [],
-    singleLog: [], // Agrega una propiedad para almacenar un pozo único
-    status: "idle",
+    singleLog: null, 
+    fetchLogsStatus: "idle",
+    fetchSingleLogStatus: "idle",
     error: null,
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
+      // Para fetchlogCurve
       .addCase(fetchlogCurve.pending, (state) => {
-        state.status = "loading";
+        state.fetchLogsStatus = "loading";
       })
       .addCase(fetchlogCurve.fulfilled, (state, action) => {
-        state.status = "succeeded";
+        state.fetchLogsStatus = "succeeded";
         state.logs = action.payload;
       })
       .addCase(fetchlogCurve.rejected, (state, action) => {
-        state.status = "failed";
+        state.fetchLogsStatus = "failed";
         state.error = action.error.message;
       })
+      // Para fetchLogCurveById
       .addCase(fetchLogCurveById.pending, (state) => {
-        state.status = "loading";
+        state.fetchSingleLogStatus = "loading";
       })
       .addCase(fetchLogCurveById.fulfilled, (state, action) => {
-        state.status = "succeeded";
+        state.fetchSingleLogStatus = "succeeded";
         state.singleLog = action.payload;
       })
       .addCase(fetchLogCurveById.rejected, (state, action) => {
-        state.status = "failed";
+        state.fetchSingleLogStatus = "failed";
         state.error = action.error.message;
       });
   },

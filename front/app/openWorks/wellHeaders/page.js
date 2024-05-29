@@ -9,7 +9,7 @@ import {
   filterByUWI,
   filterByCounty,
   filterByField,
-  filterById,
+  filterByWellNameFree,
 } from "../../../utils/filterUtils";
 import Input from "@/components/UI/Input";
 
@@ -22,7 +22,7 @@ const Datos = () => {
   const [searchTermUWI, setSearchTermUWI] = useState("");
   const [searchTermCounty, setSearchTermCounty] = useState("");
   const [searchTermField, setSearchTermField] = useState("");
-  const [searchTermWellId, setSearchTermWellId] = useState("");
+  const [searchTermWellNameFree, setSearchTermWellNameFree] = useState("");
 
   useEffect(() => {
     dispatch(fetchWells());
@@ -36,16 +36,16 @@ const Datos = () => {
 
   const filteredWellsByField = filterByField(wellsData, searchTermField);
 
-  const filteredWellsById = filterById(wellsData, searchTermWellId);
+  const filteredWellsByWellNameFree = filterByWellNameFree(wellsData, searchTermWellNameFree);
 
   return (
     <div className="bg-gray-900 h-screen pt-8">
       <div className=" bg-gray-900 text-gray-200 rounded-lg overflow-auto py-20">
         <div className="flex justify-around">
           <Input
-            placeholder="Search by well ID..."
-            value={searchTermWellId}
-            onChange={(e) => setSearchTermWellId(e.target.value)}
+            placeholder="Search by well Name..."
+            value={searchTermWellNameFree}
+            onChange={(e) => setSearchTermWellNameFree(e.target.value)}
           />
 
           <Input
@@ -53,11 +53,16 @@ const Datos = () => {
             value={searchTermUWI}
             onChange={(e) => setSearchTermUWI(e.target.value)}
           />
-          <Input
+
+          {
+            /*
+            <Input
             placeholder="Search by lease name..."
             value={searchTermName}
             onChange={(e) => setSearchTermName(e.target.value)}
           />
+            */
+          }
 
           <Input
             placeholder="Search by county..."
@@ -75,12 +80,16 @@ const Datos = () => {
         <table className="w-full table-auto">
           <thead>
             <tr className="bg-gray-900 text-gray-300 uppercase text-sm leading-normal text-center">
-              <th className="py-3 px-6 ">WELL_ID</th>
+              <th className="py-3 px-6 ">WELL_NAME_FREE</th>
               <th className="py-3 px-6 ">WELL_UWI</th>
-              <th className="py-3 px-6 ">CURRENT_WELL_LEASE_NAME</th>
+              {
+                /*
+                <th className="py-3 px-6 ">CURRENT_WELL_LEASE_NAME</th>
+                */
+              }
               <th className="py-3 px-6 ">WL_COUNTY</th>
               <th className="py-3 px-6 ">FIELD</th>
-              <th className="py-3 px-6 ">CURRENT_WELL_LEASE_NO</th>
+     
               <th className="py-3 px-6 ">Go to well</th>
             </tr>
           </thead>
@@ -90,18 +99,22 @@ const Datos = () => {
               .filter((well) => filteredWellsByUWI.includes(well))
               .filter((well) => filteredWellsByCounty.includes(well))
               .filter((well) => filteredWellsByField.includes(well))
-              .filter((well) => filteredWellsById.includes(well))
+              .filter((well) => filteredWellsByWellNameFree.includes(well))
               .map((well) => (
                 <tr
                   key={well.WELL_UWI}
                   className="border-b border-gray-200 hover:bg-blue-500 hover:text-blue-50 text-center"
                 >
-                  <td className="py-3 px-6 ">{well.WELL_ID}</td>
+                  <td className="py-3 px-6 ">{well.WELL_NAME_FREE}</td>
                   <td className="py-3 px-6 ">{well.WELL_UWI}</td>
-                  <td className="py-3 px-6 ">{well.CURRENT_WELL_LEASE_NAME}</td>
+                  {
+                    /*
+                    <td className="py-3 px-6 ">{well.CURRENT_WELL_LEASE_NAME}</td>
+                    */
+                  }
                   <td className="py-3 px-6 ">{well.WL_COUNTY}</td>
                   <td className="py-3 px-6 ">{well.FIELD}</td>
-                  <td className="py-3 px-6 ">{well.CURRENT_WELL_LEASE_NO}</td>
+        
                   <td className="py-3 px-6 ">
                     <Link href={`/openWorks/wellHeaders/${well.WELL_ID}`}>
                       <p className="text-blue-500 hover:text-blue-700">→</p>

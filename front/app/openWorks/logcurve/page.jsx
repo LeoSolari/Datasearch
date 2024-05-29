@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Input from "@/components/UI/Input";
-
-import { filterById } from "../../../utils/logCurveUtils";
 import { fetchlogCurve } from "@/redux/slices/logcurveSlice";
 
 const Page = () => {
@@ -36,40 +34,42 @@ const Page = () => {
       (el) => el.WELL_ID && String(el.WELL_ID).includes(searchTermWellId)
     );
 
+    console.log(filteredLogCurveData)
+
   return (
-    <div className="pt-[86px] bg-slate-900 text-white ">
-      <div className="flex justify-around pt-8 border-b-2">
-        <Input
-          placeholder="Search by well ID..."
-          value={searchTermWellId}
-          onChange={(e) => setSearchTermWellId(e.target.value)}
-        />
-
-        <Input
-          placeholder="Search by lease log ID"
-          value={searchTermLogCurveID}
-          onChange={(e) => setSearchTermLogCurveID(e.target.value)}
-        />
-
-        <Input
-          placeholder="Search by Service name"
-          value={searchTermServiceName}
-          onChange={(e) => setSearchTermServiceName(e.target.value)}
-        />
-      </div>
-
-      <div className="h-screen bg-gray-900">
-        <table className="w-full table-auto  bg-gray-900">
-          <thead className="bg-gray-900">
+    <div className="bg-gray-900 h-screen pt-8 text-white">
+      <div className="bg-gray-900 text-gray-200 rounded-lg overflow-auto py-20">
+        <div className="flex justify-around">
+          <Input
+            placeholder="Search by well ID..."
+            value={searchTermWellId}
+            onChange={(e) => setSearchTermWellId(e.target.value)}
+          />
+          <Input
+            placeholder="Search by lease log ID"
+            value={searchTermLogCurveID}
+            onChange={(e) => setSearchTermLogCurveID(e.target.value)}
+          />
+          <Input
+            placeholder="Search by Service name"
+            value={searchTermServiceName}
+            onChange={(e) => setSearchTermServiceName(e.target.value)}
+          />
+        </div>
+        <table className="w-full table-auto">
+          <thead>
             <tr className="bg-gray-900 text-gray-300 uppercase text-sm leading-normal text-center">
-              <th className="py-3 px-6 ">LOG CURVE ID</th>
-              <th className="py-3 px-6 ">WELL ID</th>
-              <th className="py-3 px-6 ">MEASURED DEPTH</th>
-              <th className="py-3 px-6 ">SERVICE NAME</th>
-              <th className="py-3 px-6 ">LOG Curve NAME ID</th>
-              <th className="py-3 px-6 ">TOTAL SAMPLES</th>
-              <th className="py-3 px-6 ">TOP DEPTH</th>
-              <th className="py-3 px-6 ">BASE DEPTH</th>
+              <th className="py-3 px-6">LOG CURVE ID</th>
+              <th className="py-3 px-6">WELL ID</th>
+          
+              <th className="py-3 px-6">SERVICE NAME</th>
+              <th className="py-3 px-6">LOG Curve NAME ID</th>
+              <th className="py-3 px-6">TOTAL SAMPLES</th>
+              <th className="py-3 px-6">TOP DEPTH</th>
+              <th className="py-3 px-6">BASE DEPTH</th>
+              <th className="py-3 px-6">DEPTH DATUM</th>
+              <th className="py-3 px-6">DEPTH DATUM TYPE</th>
+              <th className="py-3 px-6">Go to log curve</th>
             </tr>
           </thead>
           <tbody className="text-gray-300 bg-slate-900 text-sm font-light">
@@ -78,16 +78,24 @@ const Page = () => {
                 key={i}
                 className="border-b border-gray-200 hover:bg-blue-500 hover:text-blue-50 text-center"
               >
-                <Link href={`/openWorks/logcurve/${el.LOG_CURVE_ID}`}>
-                  <td className="p-4">LOG_CURVE_ID:{el.LOG_CURVE_ID}</td>
-                </Link>
-                <td className="p-4">WELL_ID: {el.WELL_ID}</td>
-                <td className="p-4">MEASURED_DEPTH: {el.MEASURED_DEPTH} </td>
-                <td className="p-4">SERVICE_NAME: {el.SERVICE_NAME} </td>
-                <td className="p-4">LOG_CRV_NAME_ID: {el.LOG_CRV_NAME_ID} </td>
-                <td className="p-4">TOTAL_SAMPLES: {el.TOTAL_SAMPLES} </td>
-                <td className="p-4">TOP_DEPTH: {el.TOP_DEPTH} </td>
-                <td className="p-4">BASE_DEPTH: {el.BASE_DEPTH} </td>
+                <td className="py-3 px-6">{el.LOG_CURVE_ID}</td>
+                <td className="py-3 px-6">{el.WELL_ID}</td>
+               
+                <td className="py-3 px-6">{el.SERVICE_NAME}</td>
+                <td className="py-3 px-6">{el.LOG_CRV_NAME_ID}</td>
+                <td className="py-3 px-6">{el.TOTAL_SAMPLES}</td>
+                <td className="py-3 px-6">{el.TOP_DEPTH.toFixed(2)}</td>
+
+                <td className="py-3 px-6">{el.BASE_DEPTH.toFixed(2)}</td>
+
+                <td className="py-3 px-6">{el.DEPTH_DATUM}</td>
+                <td className="py-3 px-6">{el.DEPTH_DATUM_TYPE}</td>
+
+                <td className="py-3 px-6">
+                  <Link href={`/openWorks/logcurve/${el.LOG_CURVE_ID}`}>
+                    <p className="text-blue-500 hover:text-blue-700">→</p>
+                  </Link>
+                </td>
               </tr>
             ))}
           </tbody>

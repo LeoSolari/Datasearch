@@ -10,7 +10,7 @@ import { FaLock } from "react-icons/fa";
 const HomeLinks = ({ buttonTitle, pText, fadeSide, position, where }) => {
   return (
     <div
-      className={`flex pt-8 ${
+      className={`flex  ${
         position ? "flex-row" : "flex-row-reverse"
       } items-center flex-col lg:flex-row`}
     >

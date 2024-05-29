@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap");
+
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
 @tailwind base;
@@ -36,7 +36,7 @@ a {
 }
 
 .section__padding {
-  padding: 4rem 6rem;
+  padding: 0 6rem;
 }
 
 .flex__center {
@@ -175,9 +175,6 @@ a {
     line-height: 210px;
   }
 
-  .spoon__img {
-    width: 80px;
-  }
 }
 
 @media screen and (max-width: 1150px) {

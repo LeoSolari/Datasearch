@@ -4,6 +4,7 @@ import wellSlice from "./slices/wellSlice";
 import surveySlice from "./slices/surveySlice";
 import archivoSlice from "./slices/archivoSlice";
 import { logCurveSlice } from "./slices/logcurveSlice";
+import languageSlice from "./slices/languageSlice";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     survey: surveySlice,
     logCurve: logCurveSlice.reducer,
     archivo: archivoSlice,
+    language : languageSlice
   },
 });
 

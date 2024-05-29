@@ -1,6 +1,14 @@
 import Link from "next/link";
+import es from "@/public/es";
+import en from "@/public/en";
+import {useSelector } from "react-redux";
 
 const Footer = () => {
+  
+  const isSpanish = useSelector((state) => state.language.isSpanish)
+
+  const texts = isSpanish ? es : en
+
   return (
     <div className=" w-full">
       <footer className="bg-slate-300 text-center text-neutral-600 dark:bg-neutral-600 dark:text-neutral-200 lg:text-left">
@@ -10,7 +18,7 @@ const Footer = () => {
             DataBats
           </p>
           <Link href="/terminos-y-condiciones" className="text-xs">
-            <p>Terminos y condiciones</p>
+            <p>{texts.FooterTerms} </p>
           </Link>
         </div>
       </footer>

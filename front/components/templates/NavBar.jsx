@@ -1,12 +1,27 @@
+'use client'
 import Link from "next/link";
 import logo from "../../images/logophoenix.svg";
 import Image from "next/image";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleLanguage } from "@/redux/slices/languageSlice";
+import es from "@/public/es";
+import en from "@/public/en";
 
 const Navbar = () => {
+
+  const isSpanish = useSelector((state) => state.language.isSpanish)
+  const dispatch = useDispatch()
+
+  const texts = isSpanish ? es : en
+
   const links = [
-    { text: "Login", ref: "/login" },
-    { text: "Sign up", ref: "/signup" },
+    { text: texts.NavbarLogin, ref: "/login" },
+    { text: texts.NavbarSignin, ref: "/signup" },
   ];
+
+  const handleToggleLanguage = () => {
+    dispatch(toggleLanguage());
+  };
 
   return (
     <nav className="fixed z-50 top-0 left-0 w-full bg-blue-950 text-white py-4 px-8 ">
@@ -17,7 +32,9 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <div className="flex-grow"></div>
+        <button onClick={handleToggleLanguage}>
+          {isSpanish ? 'Switch to English' : 'Cambiar a Español'}
+        </button>
 
         <div className="flex space-x-4">
           <div className="flex space-x-4">

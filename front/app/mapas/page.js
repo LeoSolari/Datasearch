@@ -4,6 +4,9 @@ import { useDispatch } from "react-redux";
 import dynamic from "next/dynamic";
 import { fetchWells } from "@/redux/slices/wellSlice";
 import Link from "next/link";
+import es from "@/public/es";
+import en from "@/public/en";
+import { useSelector } from "react-redux";
 
 const MapView = dynamic(() => import("@/components/map/MapView"), {
   ssr: false,
@@ -12,6 +15,9 @@ const MapView = dynamic(() => import("@/components/map/MapView"), {
 const Page = () => {
   const dispatch = useDispatch();
   const [wellMarkers, setWellMarkers] = useState([]);
+  const isSpanish = useSelector((state) => state.language.isSpanish)
+
+  const texts = isSpanish ? es : en
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,12 +36,11 @@ const Page = () => {
   }, [dispatch]);
 
   return (
-    <div className="mx-auto px-4 py-24 bg-gray-900 text-blue-200">
+    <div className="mx-auto h-screen px-4 py-24 bg-gray-900 text-blue-200">
       <div className="text-center">
         <h1 className="text-3xl font-bold mb-4">Mapas</h1>
         <p className="text-lg mb-4">
-          ¡Hola! Esta es una página que muestra las coordenadas recibidas de la
-          base de datos.
+          {texts.MapCoords}
         </p>
       </div>
 
@@ -44,27 +49,27 @@ const Page = () => {
         <ul className="flex justify-between flex-col text-center">
           <li className="text-gray-700 hover:underline underline-offset-8">
             <Link href={"/openWorks/wellHeaders/203"}>
-              Ir al pozo UWI: AR580121000100
+              {texts.MapGoToWell}: AR580121000100
             </Link>
           </li>
           <li className="text-gray-700 hover:underline underline-offset-8">
             <Link href={"/openWorks/wellHeaders/1881"}>
-              Ir al pozo UWI: AR580352101100
+              {texts.MapGoToWell}: AR580352101100
             </Link>
           </li>
           <li className="text-gray-700 hover:underline underline-offset-8">
             <Link href={"/openWorks/wellHeaders/58"}>
-              Ir al pozo UWI: AR580061043200
+              {texts.MapGoToWell}: AR580061043200
             </Link>
           </li>
           <li className="text-gray-700 hover:underline underline-offset-8">
             <Link href={"/openWorks/wellHeaders/75"}>
-              Ir al pozo UWI: AR580070000100
+              {texts.MapGoToWell}: AR580070000100
             </Link>
           </li>
           <li className="text-gray-700 hover:underline underline-offset-8">
             <Link href={"/openWorks/wellHeaders/605"}>
-              Ir al pozo UWI: AR620033000200
+              {texts.MapGoToWell}: AR620033000200
             </Link>
           </li>
         </ul>

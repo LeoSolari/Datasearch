@@ -49,6 +49,8 @@ const Page = () => {
         : true
     );
 
+    console.log(filteredSurveyData)
+
   filteredSurveyData.sort((a, b) => a.WELL_ID - b.WELL_ID);
 
   return (
@@ -60,11 +62,13 @@ const Page = () => {
           onChange={(e) => setSearchTermSurveyName(e.target.value)}
         />
 
-        <Input
+      {/*
+      <Input
           placeholder="Search by Well ID..."
           value={searchTermWellId}
           onChange={(e) => setSearchTermWellId(e.target.value)}
         />
+      */}
 
         <Input
           placeholder="Search by Measured Depth..."
@@ -77,12 +81,17 @@ const Page = () => {
         <table className="w-full table-auto bg-gray-900">
           <thead className="bg-gray-900">
             <tr className="bg-gray-900 text-gray-300 uppercase text-sm leading-normal text-center">
-              <th className="py-3 px-6">WELL_ID</th>
+             {
+              /*
+               <th className="py-3 px-6">WELL_ID</th>
+               */
+             }
               <th className="py-3 px-6">SURVEY_NAME</th>
-              <th className="py-3 px-6">MEASURED_DEPTH</th>
-              <th className="py-3 px-6">INCLINATION</th>
+            
+              <th className="py-3 px-6">DEPTH_DATUM</th>
+    
               <th className="py-3 px-6">AZIMUTH</th>
-              <th className="py-3 px-6">TRUE_VERT_DEPTH</th>
+         
               <th className="py-3 px-6">X_OFFSET</th>
               <th className="py-3 px-6">Y_OFFSET</th>
               <th className="py-3 px-6">Go to well</th>
@@ -94,14 +103,19 @@ const Page = () => {
                 key={i}
                 className="border-b border-gray-200 hover:bg-blue-500 hover:text-blue-50 text-center"
               >
-                <td className="py-3 px-6">{el.WELL_ID}</td>
+                {
+                  /*
+                  <td className="py-3 px-6">{el.WELL_ID}</td>
+                  */
+                }
                 <td className="py-3 px-6">{el.SURVEY_NAME}</td>
-                <td className="py-3 px-6">{el.MEASURED_DEPTH}</td>
-                <td className="py-3 px-6">{el.INCLINATION}</td>
-                <td className="py-3 px-6">{el.AZIMUTH}</td>
-                <td className="py-3 px-6">{el.TRUE_VERT_DEPTH}</td>
-                <td className="py-3 px-6">{el.X_OFFSET}</td>
-                <td className="py-3 px-6">{el.Y_OFFSET}</td>
+          
+                <td className="py-3 px-6">{el.MEASURED_DEPTH.toFixed(2)}</td>
+          
+                <td className="py-3 px-6">{el.AZIMUTH.toFixed(2)}</td>
+         
+                <td className="py-3 px-6">{el.X_OFFSET.toFixed(2)}</td>
+                <td className="py-3 px-6">{el.Y_OFFSET.toFixed(2)}</td>
                 <td className="py-3 px-6">
                   <Link href={`/openWorks/survey/${el.WELL_ID}`}>
                     <p className="text-blue-500 hover:text-blue-700">→</p>

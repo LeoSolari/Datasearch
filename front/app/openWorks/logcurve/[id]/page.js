@@ -2,8 +2,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLogCurveById } from "@/redux/slices/logcurveSlice";
-import DataView from "@/components/map/DataView";
-/*import LogCurveDetails from "@/components/wellDetails/logCurveDetails";*/
 
 const LogCurvePage = ({ params }) => {
   const dispatch = useDispatch();
@@ -16,29 +14,52 @@ const LogCurvePage = ({ params }) => {
   }, [dispatch, params.id]);
 
   if (status === "loading") {
-    return <div>Loading...</div>;
+    return <div className="text-center text-gray-600">Loading...</div>;
   }
 
   if (status === "failed") {
-    return <div>Error: {error}</div>;
+    return <div className="text-center text-red-600">Error: {error}</div>;
   }
 
+  if (!singleLog || (Array.isArray(singleLog) && singleLog.length === 0)) {
+    return <div className="text-center text-gray-600">No log curve found with ID: {params.id}</div>;
+  }
+
+  // Convertir singleLog a un array si es un objeto
+  const logData = Array.isArray(singleLog) ? singleLog : [singleLog];
+
   return (
-    <div className=" mx-auto ">
-      {singleLog ? (
-        <div className="bg-gray-900 rounded-lg shadow-md overflow-hidden">
-          <div className="p-4">
-            <h2 className="text-xl font-semibold mb-16 text-center">
-              Details for Log Curve {singleLog.LOG_CURVE_ID} (Service:{" "}
-              {singleLog.SERVICE_NAME})
-            </h2>
-            {/*    <LogCurveDetails singleLog={singleLog} />*/}
-          </div>
-          {/* Ignora el DataView si no es necesario */}
-        </div>
-      ) : (
-        <div>No log curve found with ID: {params.id}</div>
-      )}
+    <div className="p-24">
+      <div className="overflow-x-auto">
+        <table className="min-w-full bg-white border border-gray-300">
+          <thead>
+            <tr className="bg-gray-200">
+              <th className="py-2 px-4 border-b">LOG CURVE ID</th>
+              <th className="py-2 px-4 border-b">WELL ID</th>
+              <th className="py-2 px-4 border-b">MEASURED DEPTH</th>
+              <th className="py-2 px-4 border-b">SERVICE NAME</th>
+              <th className="py-2 px-4 border-b">LOG Curve NAME ID</th>
+              <th className="py-2 px-4 border-b">TOTAL SAMPLES</th>
+              <th className="py-2 px-4 border-b">TOP DEPTH</th>
+              <th className="py-2 px-4 border-b">BASE DEPTH</th>
+            </tr>
+          </thead>
+          <tbody>
+            {logData.map((log, index) => (
+              <tr key={index} className="bg-white">
+                <td className="py-2 px-4 border-b">{log.LOG_CURVE_ID}</td>
+                <td className="py-2 px-4 border-b">{log.WELL_ID}</td>
+                <td className="py-2 px-4 border-b">{log.MEASURED_DEPTH}</td>
+                <td className="py-2 px-4 border-b">{log.SERVICE_NAME}</td>
+                <td className="py-2 px-4 border-b">{log.LOG_CRV_NAME_ID}</td>
+                <td className="py-2 px-4 border-b">{log.TOTAL_SAMPLES}</td>
+                <td className="py-2 px-4 border-b">{log.TOP_DEPTH}</td>
+                <td className="py-2 px-4 border-b">{log.BASE_DEPTH}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

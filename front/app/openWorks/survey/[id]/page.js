@@ -16,27 +16,45 @@ const Page = ({ params }) => {
   }, [dispatch, params.id]);
 
   if (status === "loading") {
-    return <div>Loading...</div>;
+    return <div className="text-center text-gray-600">Loading...</div>;
   }
 
   if (status === "failed") {
-    return <div>Error: {error}</div>;
+    return <div className="text-center text-red-600">Error: {error}</div>;
   }
 
   return (
     <div className="p-24">
-      {singleSurvey.map((survey, i) => (
-        <div key={i} className="flex justify-around p-12">
-          <p className="p-2">{survey.WELL_ID}</p>
-          <p className="p-2">{survey.SURVEY_NAME}</p>
-          <p className="p-2">{survey.MEASURED_DEPTH}</p>
-          <p className="p-2">{survey.INCLINATION}</p>
-          <p className="p-2">{survey.AZIMUTH}</p>
-          <p className="p-2">{survey.TRUE_VERT_DEPTH}</p>
-          <p className="p-2">{survey.X_OFFSET}</p>
-          <p className="p-2">{survey.Y_OFFSET}</p>
-        </div>
-      ))}
+      <div className="overflow-x-auto">
+        <table className="min-w-full bg-white border border-gray-300">
+          <thead>
+            <tr className="bg-gray-200">
+              <th className="py-2 px-4 border-b">WELL ID</th>
+              <th className="py-2 px-4 border-b">SURVEY NAME</th>
+              <th className="py-2 px-4 border-b">MEASURED DEPTH</th>
+              <th className="py-2 px-4 border-b">INCLINATION</th>
+              <th className="py-2 px-4 border-b">AZIMUTH</th>
+              <th className="py-2 px-4 border-b">TRUE VERT DEPTH</th>
+              <th className="py-2 px-4 border-b">X OFFSET</th>
+              <th className="py-2 px-4 border-b">Y OFFSET</th>
+            </tr>
+          </thead>
+          <tbody>
+            {singleSurvey.map((survey, i) => (
+              <tr key={i} className={`bg-${i % 2 === 0 ? "white" : "gray-50"}`}>
+                <td className="py-2 px-4 border-b">{survey.WELL_ID}</td>
+                <td className="py-2 px-4 border-b">{survey.SURVEY_NAME}</td>
+                <td className="py-2 px-4 border-b">{survey.MEASURED_DEPTH}</td>
+                <td className="py-2 px-4 border-b">{survey.INCLINATION}</td>
+                <td className="py-2 px-4 border-b">{survey.AZIMUTH}</td>
+                <td className="py-2 px-4 border-b">{survey.TRUE_VERT_DEPTH}</td>
+                <td className="py-2 px-4 border-b">{survey.X_OFFSET}</td>
+                <td className="py-2 px-4 border-b">{survey.Y_OFFSET}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

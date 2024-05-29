@@ -37,4 +37,8 @@ export const filterById = (wellsData, searchTerm) => {
   );
 };
 
-
+export const filterByWellNameFree = (wellsData, searchTerm) => {
+  return wellsData.filter(
+    (well) => well.WELL_NAME_FREE && String(well.WELL_NAME_FREE).toLowerCase().includes(searchTerm.toLowerCase())
+  );
+};
