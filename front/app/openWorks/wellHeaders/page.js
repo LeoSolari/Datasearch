@@ -89,6 +89,8 @@ const Datos = () => {
               }
               <th className="py-3 px-6 ">WL_COUNTY</th>
               <th className="py-3 px-6 ">FIELD</th>
+              <th className="py-3 px-6">DEPTH DATUM</th>
+              <th className="py-3 px-6">DEPTH DATUM TYPE</th>
      
               <th className="py-3 px-6 ">Go to well</th>
             </tr>
@@ -114,6 +116,8 @@ const Datos = () => {
                   }
                   <td className="py-3 px-6 ">{well.WL_COUNTY}</td>
                   <td className="py-3 px-6 ">{well.FIELD}</td>
+                  <td className="py-3 px-6">{parseFloat(well.DEPTH_DATUM).toFixed(2)}</td>
+                  <td className="py-3 px-6">{well.DEPTH_DATUM_TYPE}</td>
         
                   <td className="py-3 px-6 ">
                     <Link href={`/openWorks/wellHeaders/${well.WELL_ID}`}>

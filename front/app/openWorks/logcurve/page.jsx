@@ -67,8 +67,7 @@ const Page = () => {
               <th className="py-3 px-6">TOTAL SAMPLES</th>
               <th className="py-3 px-6">TOP DEPTH</th>
               <th className="py-3 px-6">BASE DEPTH</th>
-              <th className="py-3 px-6">DEPTH DATUM</th>
-              <th className="py-3 px-6">DEPTH DATUM TYPE</th>
+          
               <th className="py-3 px-6">Go to log curve</th>
             </tr>
           </thead>
@@ -88,8 +87,7 @@ const Page = () => {
 
                 <td className="py-3 px-6">{el.BASE_DEPTH.toFixed(2)}</td>
 
-                <td className="py-3 px-6">{el.DEPTH_DATUM}</td>
-                <td className="py-3 px-6">{el.DEPTH_DATUM_TYPE}</td>
+          
 
                 <td className="py-3 px-6">
                   <Link href={`/openWorks/logcurve/${el.LOG_CURVE_ID}`}>
