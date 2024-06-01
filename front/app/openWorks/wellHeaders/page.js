@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchWells } from "@/redux/slices/wellSlice";
+import { fetchSurvey } from "@/redux/slices/surveySlice"; // Import fetchSurvey
 import Link from "next/link";
 import {
   filterByName,
@@ -13,11 +14,10 @@ import {
 } from "../../../utils/filterUtils";
 import Input from "@/components/UI/Input";
 
-// AGREGAR CONDITIONAL RENDERING PARA CUANDO NO SE PUEDE CONECTAR AL SV
-
 const Datos = () => {
   const dispatch = useDispatch();
   const wellsData = useSelector((state) => state.wells.wells);
+  const surveysData = useSelector((state) => state.survey.survey); // Correctly select surveys data
   const [searchTermName, setSearchTermName] = useState("");
   const [searchTermUWI, setSearchTermUWI] = useState("");
   const [searchTermCounty, setSearchTermCounty] = useState("");
@@ -26,21 +26,21 @@ const Datos = () => {
 
   useEffect(() => {
     dispatch(fetchWells());
+    dispatch(fetchSurvey()); // Fetch survey data
   }, [dispatch]);
 
   const filteredWellsByName = filterByName(wellsData, searchTermName);
-
   const filteredWellsByUWI = filterByUWI(wellsData, searchTermUWI);
-
   const filteredWellsByCounty = filterByCounty(wellsData, searchTermCounty);
-
   const filteredWellsByField = filterByField(wellsData, searchTermField);
-
   const filteredWellsByWellNameFree = filterByWellNameFree(wellsData, searchTermWellNameFree);
+
+  // Ensure surveysData is an array before mapping
+  const surveyWellIds = Array.isArray(surveysData) ? surveysData.map(survey => survey.WELL_ID) : [];
 
   return (
     <div className="bg-gray-900 h-screen pt-8">
-      <div className=" bg-gray-900 text-gray-200 rounded-lg overflow-auto py-20">
+      <div className="bg-gray-900 text-gray-200 rounded-lg overflow-auto py-20">
         <div className="flex justify-around">
           <Input
             placeholder="Search by well Name..."
@@ -92,7 +92,8 @@ const Datos = () => {
               <th className="py-3 px-6">DEPTH DATUM</th>
               <th className="py-3 px-6">DEPTH DATUM TYPE</th>
      
-              <th className="py-3 px-6 ">Go to well</th>
+              <th className="py-3 px-6 ">Well</th>
+              <th className="py-3 px-6 ">Survey</th>
             </tr>
           </thead>
 
@@ -123,6 +124,13 @@ const Datos = () => {
                     <Link href={`/openWorks/wellHeaders/${well.WELL_ID}`}>
                       <p className="text-blue-500 hover:text-blue-700">→</p>
                     </Link>
+                  </td>
+                  <td>
+                    {surveyWellIds.includes(well.WELL_ID) && (
+                      <Link href={`/openWorks/survey/${well.WELL_ID}`}>
+                        <p className="text-blue-500 hover:text-blue-700">→</p>
+                      </Link>
+                    )}
                   </td>
                 </tr>
               ))}

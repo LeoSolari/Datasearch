@@ -90,7 +90,7 @@ const Page = () => {
           
 
                 <td className="py-3 px-6">
-                  <Link href={`/openWorks/logcurve/${el.LOG_CURVE_ID}`}>
+                  <Link href={`/openWorks/logcurve/${el.WELL_ID}`}>
                     <p className="text-blue-500 hover:text-blue-700">→</p>
                   </Link>
                 </td>
