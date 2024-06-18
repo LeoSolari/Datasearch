@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchWells } from "@/redux/slices/wellSlice";
-import { fetchSurvey } from "@/redux/slices/surveySlice"; // Import fetchSurvey
+import { fetchSurvey } from "@/redux/slices/surveySlice";
+import { fetchlogCurve } from "@/redux/slices/logCurveSlice"; // Import fetchLogCurve
 import Link from "next/link";
 import {
   filterByName,
@@ -17,7 +18,8 @@ import Input from "@/components/UI/Input";
 const Datos = () => {
   const dispatch = useDispatch();
   const wellsData = useSelector((state) => state.wells.wells);
-  const surveysData = useSelector((state) => state.survey.survey); // Correctly select surveys data
+  const surveysData = useSelector((state) => state.survey.survey);
+  const logsData = useSelector((state) => state.logCurve.logs); // Logs data
   const [searchTermName, setSearchTermName] = useState("");
   const [searchTermUWI, setSearchTermUWI] = useState("");
   const [searchTermCounty, setSearchTermCounty] = useState("");
@@ -26,7 +28,8 @@ const Datos = () => {
 
   useEffect(() => {
     dispatch(fetchWells());
-    dispatch(fetchSurvey()); // Fetch survey data
+    dispatch(fetchSurvey());
+    dispatch(fetchlogCurve()); // Fetch log curve data
   }, [dispatch]);
 
   const filteredWellsByName = filterByName(wellsData, searchTermName);
@@ -54,27 +57,7 @@ const Datos = () => {
             onChange={(e) => setSearchTermUWI(e.target.value)}
           />
 
-          {
-            /*
-            <Input
-            placeholder="Search by lease name..."
-            value={searchTermName}
-            onChange={(e) => setSearchTermName(e.target.value)}
-          />
-            */
-          }
-
-          <Input
-            placeholder="Search by county..."
-            value={searchTermCounty}
-            onChange={(e) => setSearchTermCounty(e.target.value)}
-          />
-
-          <Input
-            placeholder="Search by field..."
-            value={searchTermField}
-            onChange={(e) => setSearchTermField(e.target.value)}
-          />
+          {/* Other input fields */}
         </div>
 
         <table className="w-full table-auto">
@@ -82,18 +65,13 @@ const Datos = () => {
             <tr className="bg-gray-900 text-gray-300 uppercase text-sm leading-normal text-center">
               <th className="py-3 px-6 ">WELL_NAME_FREE</th>
               <th className="py-3 px-6 ">WELL_UWI</th>
-              {
-                /*
-                <th className="py-3 px-6 ">CURRENT_WELL_LEASE_NAME</th>
-                */
-              }
               <th className="py-3 px-6 ">WL_COUNTY</th>
               <th className="py-3 px-6 ">FIELD</th>
               <th className="py-3 px-6">DEPTH DATUM</th>
               <th className="py-3 px-6">DEPTH DATUM TYPE</th>
-     
               <th className="py-3 px-6 ">Well</th>
               <th className="py-3 px-6 ">Survey</th>
+              <th className="py-3 px-6 ">Log Curve</th>
             </tr>
           </thead>
 
@@ -110,16 +88,10 @@ const Datos = () => {
                 >
                   <td className="py-3 px-6 ">{well.WELL_NAME_FREE}</td>
                   <td className="py-3 px-6 ">{well.WELL_UWI}</td>
-                  {
-                    /*
-                    <td className="py-3 px-6 ">{well.CURRENT_WELL_LEASE_NAME}</td>
-                    */
-                  }
                   <td className="py-3 px-6 ">{well.WL_COUNTY}</td>
                   <td className="py-3 px-6 ">{well.FIELD}</td>
                   <td className="py-3 px-6">{parseFloat(well.DEPTH_DATUM).toFixed(2)}</td>
                   <td className="py-3 px-6">{well.DEPTH_DATUM_TYPE}</td>
-        
                   <td className="py-3 px-6 ">
                     <Link href={`/openWorks/wellHeaders/${well.WELL_ID}`}>
                       <p className="text-blue-500 hover:text-blue-700">→</p>
@@ -128,6 +100,13 @@ const Datos = () => {
                   <td>
                     {surveyWellIds.includes(well.WELL_ID) && (
                       <Link href={`/openWorks/survey/${well.WELL_ID}`}>
+                        <p className="text-blue-500 hover:text-blue-700">→</p>
+                      </Link>
+                    )}
+                  </td>
+                  <td>
+                    {logsData.some((log) => log.WELL_ID === well.WELL_ID) && (
+                      <Link href={`/openWorks/logcurve/${well.WELL_ID}`}>
                         <p className="text-blue-500 hover:text-blue-700">→</p>
                       </Link>
                     )}

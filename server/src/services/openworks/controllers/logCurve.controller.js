@@ -46,7 +46,7 @@ exports.getAllLogCurvesById = (req, res) => {
         res.status(500).json({ error: "Error al abrir la base de datos" });
       } else {
         db.all(
-          "SELECT LOG_CURVE_ID, WELL_ID, SERVICE_NAME, LOG_CRV_NAME_ID, TOTAL_SAMPLES, TOP_DEPTH, BASE_DEPTH FROM LOG_CURVE_HEADER WHERE LOG_CURVE_ID = ?",
+          "SELECT WELL_ID, LOG_CURVE_ID, SERVICE_NAME, LOG_CRV_NAME_ID, TOTAL_SAMPLES, TOP_DEPTH, BASE_DEPTH FROM LOG_CURVE_HEADER WHERE WELL_ID = ?",
           [logId],
           (err, rows) => {
             if (err) {

@@ -1,4 +1,4 @@
-"use client";
+'use client'
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLogCurveById } from "@/redux/slices/logcurveSlice";
@@ -13,6 +13,9 @@ const LogCurvePage = ({ params }) => {
     }
   }, [dispatch, params.id]);
 
+  // Ordenar los datos de la curva de registro por LOG_CURVE_ID de menor a mayor
+  const sortedLogData = singleLog ? [...singleLog].sort((a, b) => a.LOG_CURVE_ID - b.LOG_CURVE_ID) : [];
+
   if (status === "loading") {
     return <div className="text-center text-gray-600">Loading...</div>;
   }
@@ -21,12 +24,9 @@ const LogCurvePage = ({ params }) => {
     return <div className="text-center text-red-600">Error: {error}</div>;
   }
 
-  if (!singleLog || (Array.isArray(singleLog) && singleLog.length === 0)) {
+  if (!sortedLogData || sortedLogData.length === 0) {
     return <div className="text-center text-gray-600">No log curve found with ID: {params.id}</div>;
   }
-
-  // Convertir singleLog a un array si es un objeto
-  const logData = Array.isArray(singleLog) ? singleLog : [singleLog];
 
   return (
     <div className="p-24">
@@ -45,7 +45,7 @@ const LogCurvePage = ({ params }) => {
             </tr>
           </thead>
           <tbody>
-            {logData.map((log, index) => (
+            {sortedLogData.map((log, index) => (
               <tr key={index} className="bg-white">
                 <td className="py-2 px-4 border-b">{log.LOG_CURVE_ID}</td>
                 <td className="py-2 px-4 border-b">{log.WELL_ID}</td>

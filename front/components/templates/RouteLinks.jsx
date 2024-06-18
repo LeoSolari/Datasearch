@@ -40,7 +40,7 @@ const RouteLinks = () => {
               buttonTitle={texts.ArchiveTitle}
               pText={texts.ArchiveText}
               fadeSide="left"
-              where="/archivodigital"
+              where="http://127.0.0.1:5000/"
             />
           </div>
 
@@ -50,7 +50,7 @@ const RouteLinks = () => {
               pText={texts.OpenWorksText}
               fadeSide="left"
               position
-              where="/openWorks"
+              where="/openWorks/wellHeaders"
             />
           </div>
         </div>

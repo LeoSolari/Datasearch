@@ -29,7 +29,7 @@ const Page = ({ params }) => {
         <table className="min-w-full bg-white border border-gray-300">
           <thead>
             <tr className="bg-gray-200">
-              <th className="py-2 px-4 border-b">WELL ID</th>
+       
               <th className="py-2 px-4 border-b">SURVEY NAME</th>
               <th className="py-2 px-4 border-b">MEASURED DEPTH</th>
               <th className="py-2 px-4 border-b">INCLINATION</th>
@@ -41,15 +41,15 @@ const Page = ({ params }) => {
           </thead>
           <tbody>
             {singleSurvey.map((survey, i) => (
-              <tr key={i} className={`bg-${i % 2 === 0 ? "white" : "gray-50"}`}>
-                <td className="py-2 px-4 border-b">{survey.WELL_ID}</td>
+              <tr key={i} className={`bg-${i % 2 === 0 ? "white" : "gray-50"} text-center`}>
+              
                 <td className="py-2 px-4 border-b">{survey.SURVEY_NAME}</td>
-                <td className="py-2 px-4 border-b">{survey.MEASURED_DEPTH}</td>
-                <td className="py-2 px-4 border-b">{survey.INCLINATION}</td>
-                <td className="py-2 px-4 border-b">{survey.AZIMUTH}</td>
-                <td className="py-2 px-4 border-b">{survey.TRUE_VERT_DEPTH}</td>
-                <td className="py-2 px-4 border-b">{survey.X_OFFSET}</td>
-                <td className="py-2 px-4 border-b">{survey.Y_OFFSET}</td>
+                <td className="py-2 px-4 border-b">{parseFloat(survey.MEASURED_DEPTH).toFixed(2)}</td>
+                <td className="py-2 px-4 border-b">{survey.INCLINATION.toFixed(2)}</td>
+                <td className="py-2 px-4 border-b">{survey.AZIMUTH.toFixed(2)}</td>
+                <td className="py-2 px-4 border-b">{parseFloat(survey.TRUE_VERT_DEPTH).toFixed(2)}</td>
+                <td className="py-2 px-4 border-b">{parseFloat(survey.X_OFFSET).toFixed(2)}</td>
+                <td className="py-2 px-4 border-b">{parseFloat(survey.Y_OFFSET).toFixed(2)}</td>
               </tr>
             ))}
           </tbody>
