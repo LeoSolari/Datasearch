@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchWells } from "@/redux/slices/wellSlice";
 import { fetchSurvey } from "@/redux/slices/surveySlice";
-import { fetchlogCurve } from "@/redux/slices/logCurveSlice"; // Import fetchLogCurve
+import { fetchlogCurve } from "@/redux/slices/logcurveSlice";
 import Link from "next/link";
 import {
   filterByName,
