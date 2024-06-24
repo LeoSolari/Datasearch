@@ -1,8 +1,8 @@
 export default {
     NavbarLogin: "Login",
     NavbarSignin: "Sign in",
-    HeaderTitle: "Welcome to our page!",
-    HeaderText: "Feel free to explore our website!. Contact us to obtain more information!.",
+    HeaderTitle: "Phoenix portal",
+    HeaderText: "Feel free to explore our website!",
     HeaderButton: "Explore our main page",
 
     SolutionTitle: "What Are We Here To Solve?",

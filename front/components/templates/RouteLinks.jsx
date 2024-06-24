@@ -21,7 +21,8 @@ const RouteLinks = () => {
               pText={texts.DashboardText}
               position
               fadeSide="left"
-              where="/dashboard"
+              /*where="/dashboard"*/
+              where="/"
             />
           </div>
 

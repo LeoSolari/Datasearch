@@ -1,8 +1,8 @@
 export default {
     NavbarLogin: "Ingresar",
     NavbarSignin: "Crear cuenta",
-    HeaderTitle: "Bievenidos a nuestro portal!",
-    HeaderText: "Explora La Página Y Contáctanos Si Tienes Alguna Pregunta. Siéntete Libre De Comunicarte Con Nosotros Para Obtener Más Información.",
+    HeaderTitle: "Portal Phoenix",
+    HeaderText: "Explora nuestro portal!",
     HeaderButton: "Explora nuestra pagina principal",
 
     SolutionTitle: "¿Qué Venimos A Solucionar?",

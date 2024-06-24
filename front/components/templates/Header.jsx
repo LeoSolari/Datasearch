@@ -14,14 +14,12 @@ const Header = () => {
   }
 
   return (
-    <div className="app__wrapper section__padding bg-black w-full text-center  " id="home">
+    <div className="pt-24 pb-4 w-full text-center  " id="home">
       <div >
-        <h1 className="tracking-wider uppercase leading-9 md:leading-[117px] text-[40px] md:text-[90px] font-['Cormorant_Upright'] text-[var(--color-golden)] ">
+        <h1 className="tracking-wider uppercase pb-4 leading-9 md:leading-[65px] text-[35px] md:text-[60px] font-['Cormorant_Upright'] text-[var(--color-golden)] ">
           {texts.HeaderTitle}
         </h1>
-        <p className="p__opensans my-[2rem]">
-        {texts.HeaderText}
-        </p>
+      
         <button
           type="button"
           className="custom__button bg-[var(--color-crimson)] "
