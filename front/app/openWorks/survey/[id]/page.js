@@ -76,8 +76,8 @@ const Page = ({ params }) => {
                 <td className="py-2 px-4 border-b">{survey.PREFERRED_SURVEY_IND}</td>
                 <td className="py-2 px-4 border-b">{survey.TOTAL_SAMPLES}</td>
                 <td className="py-2 px-4 border-b">{survey.SCALE_TYPE}</td>
-                <td className="py-2 px-4 border-b">{survey.MAX_INCLINATION}</td>
-                <td className="py-2 px-4 border-b">{survey.MAX_LATERAL_DISTANCE}</td>
+                <td className="py-2 px-4 border-b">{survey.MAX_INCLINATION.toFixed(2)}</td>
+                <td className="py-2 px-4 border-b">{survey.MAX_LATERAL_DISTANCE.toFixed(2)}</td>
               </tr>
             ))}
           </tbody>
@@ -90,7 +90,9 @@ const Page = ({ params }) => {
         <table className="min-w-full bg-white border border-gray-300">
           <thead>
             <tr className="bg-gray-200">
+            <th className="py-2 px-4 border-b">SURVEY_NAME</th>
               <th className="py-2 px-4 border-b">MEASURED DEPTH</th>
+             
               <th className="py-2 px-4 border-b">INCLINATION</th>
               <th className="py-2 px-4 border-b">AZIMUTH</th>
               <th className="py-2 px-4 border-b">TRUE VERT DEPTH</th>
@@ -101,7 +103,9 @@ const Page = ({ params }) => {
           <tbody>
             {singleSurvey.map((survey, i) => (
               <tr key={i} className={`bg-${i % 2 === 0 ? "white" : "gray-50"} text-center`}>
+                <td className="py-2 px-4 border-b">{survey.SURVEY_NAME}</td>
                 <td className="py-2 px-4 border-b">{parseFloat(survey.MEASURED_DEPTH).toFixed(2)}</td>
+  
                 <td className="py-2 px-4 border-b">{parseFloat(survey.INCLINATION).toFixed(2)}</td>
                 <td className="py-2 px-4 border-b">{parseFloat(survey.AZIMUTH).toFixed(2)}</td>
                 <td className="py-2 px-4 border-b">{parseFloat(survey.TRUE_VERT_DEPTH).toFixed(2)}</td>

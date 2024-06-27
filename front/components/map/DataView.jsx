@@ -15,6 +15,7 @@ const DataView = ({ UWI, lat, long }) => {
 
       <Marker key={UWI} position={[lat, long]}>
         <Popup>
+          <p className="text-center">{UWI}</p>
           <p>Lat: {lat}</p>
           <p>Long: {long}</p>
         </Popup>

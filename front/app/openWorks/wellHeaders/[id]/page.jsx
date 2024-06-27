@@ -28,14 +28,13 @@ function Page({ params }) {
       {singleWell ? (
         <div className="bg-gray-900 rounded-lg shadow-md overflow-hidden">
           <div className="p-4">
-            <h2 className="text-xl font-semibold mb-16 text-center">
-              Details for well {singleWell.WELL_NAME_FREE} (UWI:{" "}
-              {singleWell.WELL_UWI})
+            <h2 className="py-24 text-white text-xl font-semibold text-center">
+             {singleWell.FIELD} 
             </h2>
             <WellDetails singleWell={singleWell} />
           </div>
           <DataView
-            UWI={singleWell.WELL_UWI}
+            UWI={singleWell.CURRENT_WELL_LEASE_NAME}
             lat={singleWell.WL_SURFACE_LATITUDE}
             long={singleWell.WL_SURFACE_LONGITUDE}
           />
