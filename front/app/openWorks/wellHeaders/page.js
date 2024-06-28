@@ -84,7 +84,7 @@ const Datos = () => {
               .map((well) => (
                 <tr
                   key={well.WELL_UWI}
-                  className="border-b border-gray-200 hover:bg-blue-500 hover:text-blue-50 text-center"
+                  className="border-b border-gray-200 hover:bg-slate-800 hover:text-blue-50 text-center"
                 >
                   <td className="py-3 px-6 ">{well.WELL_NAME_FREE}</td>
                   <td className="py-3 px-6 ">{well.WELL_UWI}</td>
@@ -94,20 +94,20 @@ const Datos = () => {
                   <td className="py-3 px-6">{well.DEPTH_DATUM_TYPE}</td>
                   <td className="py-3 px-6 ">
                     <Link href={`/openWorks/wellHeaders/${well.WELL_ID}`}>
-                      <p className="text-blue-500 hover:text-blue-700">→</p>
+                      <p className="text-white hover:text-green-600">→</p>
                     </Link>
                   </td>
                   <td>
                     {surveyWellIds.includes(well.WELL_ID) && (
                       <Link href={`/openWorks/survey/${well.WELL_ID}`}>
-                        <p className="text-blue-500 hover:text-blue-700">→</p>
+                        <p className="text-blue-500 hover:text-green-600">→</p>
                       </Link>
                     )}
                   </td>
                   <td>
                     {logsData.some((log) => log.WELL_ID === well.WELL_ID) && (
                       <Link href={`/openWorks/logcurve/${well.WELL_ID}`}>
-                        <p className="text-blue-500 hover:text-blue-700">→</p>
+                        <p className="text-white hover:text-green-600">→</p>
                       </Link>
                     )}
                   </td>

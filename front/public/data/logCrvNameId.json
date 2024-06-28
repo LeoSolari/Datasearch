@@ -1,0 +1,879 @@
+[
+    {
+      "LOG_CURVE_NAME_ID": 1637,
+      "Name": "AHT90"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 2905,
+      "Name": "AMF"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1595,
+      "Name": "ANHIDRITA"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1605,
+      "Name": "ARCILITA"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1785,
+      "Name": "ARENARCLLSA"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1610,
+      "Name": "ARENISCA"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1784,
+      "Name": "ARENTBCEA"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 715,
+      "Name": "AT10"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 716,
+      "Name": "AT20"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 691,
+      "Name": "AT30"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 573,
+      "Name": "AT90"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 2907,
+      "Name": "ATD2"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1815,
+      "Name": "ATRT"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 2937,
+      "Name": "ATRX"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4103,
+      "Name": "AVAZ_Gradiente_Anisotropi"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4148,
+      "Name": "Biot_H"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4161,
+      "Name": "Biot_H_min"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4149,
+      "Name": "Biot_V"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4162,
+      "Name": "Biot_V_min"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1895,
+      "Name": "Breakdown"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 9,
+      "Name": "BS"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1622,
+      "Name": "C1"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1623,
+      "Name": "C2"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1624,
+      "Name": "C3"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 13,
+      "Name": "CALI"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1794,
+      "Name": "CALIZA"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1795,
+      "Name": "CALZARCILL"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1796,
+      "Name": "CALZARENOSA"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4023,
+      "Name": "Carb_XRD"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3589,
+      "Name": "CBL"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3782,
+      "Name": "CBW"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4128,
+      "Name": "CLA_XRD_Gauss_1"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4022,
+      "Name": "Clay_XRD"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1892,
+      "Name": "Collapse"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1753,
+      "Name": "COT"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1878,
+      "Name": "CTEM"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4104,
+      "Name": "Densidad_2023_Depth6"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1445,
+      "Name": "DEPT"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 43,
+      "Name": "DEPTH"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4077,
+      "Name": "Dol_XRD"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4086,
+      "Name": "Dol_XRD_"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 65,
+      "Name": "DPHI"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 2895,
+      "Name": "DPHZ"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 67,
+      "Name": "DRHO"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 87,
+      "Name": "DT"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4123,
+      "Name": "DT_Edit_INV"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 70,
+      "Name": "DTC"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1708,
+      "Name": "DTCO"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3968,
+      "Name": "DTCO_edit_ECr"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3967,
+      "Name": "DTCO_edit_interp"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4033,
+      "Name": "DTCO_VL_splice"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1818,
+      "Name": "DTSH_00C"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1819,
+      "Name": "DTSH_90C"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1638,
+      "Name": "DTSM"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1477,
+      "Name": "DTST"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1820,
+      "Name": "DTSTE"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1824,
+      "Name": "ED"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4109,
+      "Name": "Facies_Model_VPC_Krig_1"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4150,
+      "Name": "FANG"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 2897,
+      "Name": "FCD"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1894,
+      "Name": "Fracture"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1775,
+      "Name": "GasTotal"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 121,
+      "Name": "GR"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1885,
+      "Name": "GR_EDTC"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4078,
+      "Name": "GR_LWD"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4039,
+      "Name": "GR_NORM"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4107,
+      "Name": "GR_Norm_0_1m"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 2944,
+      "Name": "GREZ"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1822,
+      "Name": "HAZIM"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1702,
+      "Name": "HCAL"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 2898,
+      "Name": "HD1"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1889,
+      "Name": "HD1_PPC1"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 2899,
+      "Name": "HD2"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1890,
+      "Name": "HD2_PPC1"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1816,
+      "Name": "HDAR"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 2900,
+      "Name": "HDOV"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1706,
+      "Name": "HMNO"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3215,
+      "Name": "HTEM"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1625,
+      "Name": "iC4"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1627,
+      "Name": "iC5"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1813,
+      "Name": "ICV"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1814,
+      "Name": "IHV"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 134,
+      "Name": "ILD"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 136,
+      "Name": "ILM"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4104,
+      "Name": "ImpedanciaP_2023_Depth6"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4105,
+      "Name": "ImpedanciaS_2023_Depth2"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4129,
+      "Name": "IMPP_23_"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3815,
+      "Name": "IPW"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3783,
+      "Name": "IPW_A1"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3784,
+      "Name": "IPW_A2"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 138,
+      "Name": "ITT"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4142,
+      "Name": "K_h"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4143,
+      "Name": "K_v"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4119,
+      "Name": "LandingComb"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1607,
+      "Name": "LIMOARCILITA"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4108,
+      "Name": "LITH_VM_Model"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 154,
+      "Name": "LL8"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 153,
+      "Name": "LL8U"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1891,
+      "Name": "LowerFracture"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 516,
+      "Name": "M"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3536,
+      "Name": "MDT"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3971,
+      "Name": "Metros_nav_1026_h"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3969,
+      "Name": "Metros_nav_1027_h"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3973,
+      "Name": "Metros_nav_1028_h"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4059,
+      "Name": "Metros_nav_1058_h"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4061,
+      "Name": "Metros_nav_1059_h"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4063,
+      "Name": "Metros_nav_1060_h"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4065,
+      "Name": "Metros_nav_1061_h"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4152,
+      "Name": "Metros_nav_2041_h"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4155,
+      "Name": "metros_nav_2042_h"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4157,
+      "Name": "metros_nav_2043_h"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4160,
+      "Name": "Metros_nav_2044_h"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4116,
+      "Name": "Metros_nav_2071_h"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4118,
+      "Name": "Metros_nav_2072_h"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4113,
+      "Name": "metros_nav_2073_h"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4114,
+      "Name": "Metros_nav_2074_h"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 163,
+      "Name": "MINV"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1626,
+      "Name": "nC4"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1628,
+      "Name": "nC5"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1825,
+      "Name": "ND"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3279,
+      "Name": "NEUTRON"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 179,
+      "Name": "NPHI"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4120,
+      "Name": "omb"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3534,
+      "Name": "SWC"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 210,
+      "Name": "PHIE"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 220,
+      "Name": "PHIT"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4131,
+      "Name": "PHIT2_IA_Gauss2_1"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3495,
+      "Name": "PORF"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1893,
+      "Name": "Pp"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4026,
+      "Name": "PP_Grad"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1479,
+      "Name": "PR"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4144,
+      "Name": "PR_Dyn"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4027,
+      "Name": "PR_H"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4145,
+      "Name": "PR_V"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3816,
+      "Name": "PWXO"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3786,
+      "Name": "PWXO_A1"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3814,
+      "Name": "PWXO_A2"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4025,
+      "Name": "Py_XRD"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4024,
+      "Name": "QFP_XRD"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 253,
+      "Name": "RHOB"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4124,
+      "Name": "RHOB_Edit_INV"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1640,
+      "Name": "RHOZ"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1575,
+      "Name": "ROP"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1896,
+      "Name": "ROP5"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 305,
+      "Name": "RT"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3531,
+      "Name": "RT10"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3530,
+      "Name": "RT20"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3529,
+      "Name": "RT30"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3528,
+      "Name": "RT60"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3527,
+      "Name": "RT90"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1800,
+      "Name": "RVOLCANICA"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 311,
+      "Name": "RWA"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 2933,
+      "Name": "RXOZ"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1823,
+      "Name": "SDEVM"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4125,
+      "Name": "SDT_Edit_INV"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 365,
+      "Name": "SGR"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1856,
+      "Name": "SONDE_TEMP"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 426,
+      "Name": "SP"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 2908,
+      "Name": "SPAR"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1768,
+      "Name": "SPB"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3537,
+      "Name": "SPCORR"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 420,
+      "Name": "SPHI"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4029,
+      "Name": "SV_Grad"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1821,
+      "Name": "SVEL"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 450,
+      "Name": "SW"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 449,
+      "Name": "SWT"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3790,
+      "Name": "SWT_A1"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3791,
+      "Name": "SWT_A2"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4132,
+      "Name": "SWT3_Phit_Gauss_1"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1858,
+      "Name": "T2CUTOFF"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 460,
+      "Name": "TEMP"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1235,
+      "Name": "TENS"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 465,
+      "Name": "THOR"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 466,
+      "Name": "TNPH"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1616,
+      "Name": "TOBA"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4130,
+      "Name": "TOC_gaus_imp_1"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3794,
+      "Name": "TOC_LECO"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3793,
+      "Name": "TOC_LECO_EXTRAIDO"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1861,
+      "Name": "TPRA"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3521,
+      "Name": "TSTR"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1478,
+      "Name": "TT"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1862,
+      "Name": "TURA"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 474,
+      "Name": "TVD"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4151,
+      "Name": "UCS_H"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4031,
+      "Name": "UCS_V"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4163,
+      "Name": "UpperCollapse"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1863,
+      "Name": "UPRA"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 480,
+      "Name": "URAN"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3792,
+      "Name": "VANH"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3795,
+      "Name": "VBIT"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3796,
+      "Name": "VCAR"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3797,
+      "Name": "VCLA"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3540,
+      "Name": "VCLANH"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3539,
+      "Name": "VCLCAL"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3532,
+      "Name": "VCLIGN"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3538,
+      "Name": "VCLSAN"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3799,
+      "Name": "VIGNEOUS"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1695,
+      "Name": "VKER"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4052,
+      "Name": "VL_MMo_x-1_600  IntVel"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3798,
+      "Name": "VOIL_A1"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3800,
+      "Name": "VOIL_A2"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1480,
+      "Name": "VPVS"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3810,
+      "Name": "VPYR"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3809,
+      "Name": "VQFM"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1576,
+      "Name": "VSEC"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3819,
+      "Name": "VWAT"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3808,
+      "Name": "WANH"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3807,
+      "Name": "WANH_XRD"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3806,
+      "Name": "WCAR"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3805,
+      "Name": "WCAR_XRD"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3804,
+      "Name": "WCLA"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3803,
+      "Name": "WCLA_XRD"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3802,
+      "Name": "WKER"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3801,
+      "Name": "WPYR"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3813,
+      "Name": "WPYR_XRD"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3812,
+      "Name": "WQFM"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 3811,
+      "Name": "WQFM_XRD"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4146,
+      "Name": "YME_Dyn"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4147,
+      "Name": "YME_H"
+    }
+  ]
+  
