@@ -100,7 +100,7 @@ const Datos = () => {
                   <td>
                     {surveyWellIds.includes(well.WELL_ID) && (
                       <Link href={`/openWorks/survey/${well.WELL_ID}`}>
-                        <p className="text-blue-500 hover:text-green-600">→</p>
+                        <p className="text-white hover:text-green-600">→</p>
                       </Link>
                     )}
                   </td>

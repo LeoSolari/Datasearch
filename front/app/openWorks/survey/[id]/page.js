@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 import { fetchSurveyById } from "@/redux/slices/surveySlice";
 import { fetchSurveyHdrById } from "@/redux/slices/surveyHdrSlice";
@@ -39,6 +40,14 @@ const Page = ({ params }) => {
 
   return (
     <div className="p-24">
+
+        <div className="p-4">
+            <Link href="/openWorks/wellHeaders/">
+              <p className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center">
+                Volver a OpenWorks
+              </p>
+            </Link>
+          </div>
      
       <h1 className="text-3xl font-bold mb-6 text-center">{surveyName}</h1>
 

@@ -1,5 +1,6 @@
 'use client'
 import React, { useEffect } from "react";
+import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLogCurveById } from "@/redux/slices/logcurveSlice";
 import { fetchWellById } from "@/redux/slices/wellSlice";
@@ -45,6 +46,16 @@ const LogCurvePage = ({ params }) => {
 
   return (
     <div className="p-24">
+
+          <div className="p-4">
+            <Link href="/openWorks/wellHeaders/">
+              <p className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center">
+                Volver a OpenWorks
+              </p>
+            </Link>
+          </div>
+
+
       <div className="overflow-x-auto">
        <h2 className="text-4xl text-center p-8">{singleWell && singleWell.WELL_NAME_FREE}</h2>
         <table className="min-w-full bg-white border border-gray-300">
