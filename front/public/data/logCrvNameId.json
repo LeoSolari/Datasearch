@@ -874,6 +874,94 @@
     {
       "LOG_CURVE_NAME_ID": 4147,
       "Name": "YME_H"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1559,
+      "Name": "AAVE"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1314,
+      "Name": "AC"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1560,
+      "Name": "AAMIN"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1561,
+      "Name": "AR1"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1562,
+      "Name": "AR2"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1563,
+      "Name": "AR3"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1564,
+      "Name": "AR4"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1565,
+      "Name": "AR5"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1566,
+      "Name": "AR6"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1567,
+      "Name": "AR7"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1568,
+      "Name": "AR8"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 4,
+      "Name": "AZIM"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1494,
+      "Name": "AZOD"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1495,
+      "Name": "AZW"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1499,
+      "Name": "AZXEQI"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 548,
+      "Name": "BIT"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1525,
+      "Name": "BKL"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1526,
+      "Name": "BKS"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1463,
+      "Name": "BVOL"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 550,
+      "Name": "CAL"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 688,
+      "Name": "CAL1"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 689,
+      "Name": "CAL2"
     }
   ]
   
