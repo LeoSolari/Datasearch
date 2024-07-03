@@ -14,13 +14,22 @@ export const fetchSurveyById = createAsyncThunk(
   "surveys/getSurveyById",
   async (surveyId) => {
     const response = await axios.get(
-      `http://localhost:4000/api/surveys/${surveyId}`
+      `http://localhost:4000/api/surveys/id/${surveyId}`
     );
     return response.data;
   }
 );
 
-// Slice para el estado de los surveys
+export const fetchSurveyByName = createAsyncThunk(
+  "surveys/getSurveyByName",
+  async (surveyName) => {
+    const response = await axios.get(
+      `http://localhost:4000/api/surveys/name/${encodeURIComponent(surveyName)}`
+    );
+    return response.data;
+  }
+);
+
 export const surveySlice = createSlice({
   name: "survey",
   initialState: {
@@ -51,6 +60,17 @@ export const surveySlice = createSlice({
         state.singleSurvey = action.payload;
       })
       .addCase(fetchSurveyById.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(fetchSurveyByName.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchSurveyByName.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.singleSurvey = action.payload; // Assuming the payload structure is similar
+      })
+      .addCase(fetchSurveyByName.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       });

@@ -25,10 +25,10 @@ const MapView = ({ markers }) => {
       center={[-38.504912173936795, -68.36843939858379]}
       zoom={6}
       className="rounded-lg overflow-hidden shadow-md"
-      style={{ width: "800px", height: "450px" }}
+      style={{ width: "1800px", height: "600px" }}
     >
       <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        url='https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'
         noWrap={true}
         minZoom={3}
       />
@@ -39,7 +39,7 @@ const MapView = ({ markers }) => {
               href={`/openWorks/wellHeaders/${marker.id}`}
               className="text-blue-500 hover:underline"
             >
-              UWI: {marker.uwi}
+              WELL NAME: {marker.uwi}
             </Link>
             <p>Lat: {marker.lat}</p>
             <p>Long: {marker.long}</p>

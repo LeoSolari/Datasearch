@@ -52,10 +52,10 @@ const WellDetails = ({ singleWell }) => {
       <div className="text-center my-4">
         <div className="py-4">
           <h3 className="p-0.5 text-xl">SURFACE X COORDINATE</h3>
-          <p>{singleWell.WL_SURFACE_X_COORDINATE}</p></div>
+          <p>{singleWell.WL_SURFACE_X_COORDINATE.toFixed(2)}</p></div>
         <div className="py-4">  
           <h3 className="p-0.5 text-xl">SURFACE Y COORDINATE</h3>
-          <p>{singleWell.WL_SURFACE_Y_COORDINATE}</p></div>
+          <p>{singleWell.WL_SURFACE_Y_COORDINATE.toFixed(2)}</p></div>
         <div className="py-4">
         <h3 className="p-0.5 text-xl">SURFACE LATITUDE</h3>
           <p>{singleWell.WL_SURFACE_LATITUDE}</p>
@@ -74,7 +74,7 @@ const WellDetails = ({ singleWell }) => {
 
       <div className="py-4">
           <h3 className="p-0.5 text-xl">WELL NAME</h3>
-          <p>{singleWell.CURRENT_WELL_LEASE_NAME}</p>
+          <p>{singleWell.WELL_NAME_FREE}</p>
         </div>
         <div className="py-4">
           <h3 className="p-0.5 text-xl">UWI</h3>
@@ -119,3 +119,4 @@ const WellDetails = ({ singleWell }) => {
 };
 
 export default WellDetails;
+

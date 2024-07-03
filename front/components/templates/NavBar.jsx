@@ -37,13 +37,14 @@ const Navbar = () => {
         </button>
 
         <div className="flex space-x-4">
-          <div className="flex space-x-4">
+         { /* <div className="flex space-x-4">
             {links.map((link, index) => (
               <Link href={link.ref} key={index}>
                 <p className="hover:text-blue-300">{link.text}</p>
               </Link>
             ))}
-          </div>
+          </div>*/}
+        
         </div>
       </div>
     </nav>

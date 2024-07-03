@@ -50,6 +50,6 @@ export default {
     LoginButton: "Ingresar",
     LoginNoAcc: "No tienes cuenta?",
 
-    MapCoords: "Aqui puedes ver todos los pozos en un mapa.",
+    MapCoords: "Se muestran los pozos de la base de datos de openworks.",
     MapGoToWell: "Ir al pozo"
 }

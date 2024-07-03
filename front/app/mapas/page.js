@@ -23,10 +23,10 @@ const Page = () => {
     const fetchData = async () => {
       const res = await dispatch(fetchWells());
       const WELL_LAT_LONG_UWI_ID = res.payload.map(
-        ({ WL_SURFACE_LATITUDE, WL_SURFACE_LONGITUDE, WELL_UWI, WELL_ID }) => ({
+        ({ WL_SURFACE_LATITUDE, WL_SURFACE_LONGITUDE, WELL_NAME_FREE, WELL_ID }) => ({
           lat: WL_SURFACE_LATITUDE,
           long: WL_SURFACE_LONGITUDE,
-          uwi: WELL_UWI,
+          uwi: WELL_NAME_FREE,
           id: WELL_ID,
         })
       );
@@ -36,9 +36,9 @@ const Page = () => {
   }, [dispatch]);
 
   return (
-    <div className="mx-auto h-screen px-4 py-24 bg-gray-900 text-blue-200">
+    <div className="mx-auto h-full py-24 bg-gray-900 text-blue-200">
       <div className="text-center">
-        <h1 className="text-3xl font-bold mb-4">Mapas</h1>
+        <h1 className="text-3xl font-bold mb-4">Mapa</h1>
         <p className="text-lg mb-4">
           {texts.MapCoords}
         </p>
@@ -46,7 +46,9 @@ const Page = () => {
 
       <div className="flex justify-around bg-white rounded-lg shadow-md overflow-hidden">
         <MapView markers={wellMarkers} />
-        <ul className="flex justify-between flex-col text-center">
+       {
+        /*
+           <ul className="flex justify-between flex-col text-center">
           <li className="text-gray-700 hover:underline underline-offset-8">
             <Link href={"/openWorks/wellHeaders/203"}>
               {texts.MapGoToWell}: AR580121000100
@@ -73,6 +75,8 @@ const Page = () => {
             </Link>
           </li>
         </ul>
+        */
+       }
       </div>
     </div>
   );

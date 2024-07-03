@@ -13,12 +13,14 @@ const RouteLinks = () => {
 
   return (
     <div>
-      <div className="flex lg:justify-around w-full  ">
-        <div className="flex flex-col">
-          <div className="flex ">
+      <div className="flex lg:justify-around w-full">
+        <div className="flex flex-row-reverse">
+          <div className="flex pt-8">
             <HomeLinks
               buttonTitle={texts.DashboardTitle}
-              pText={texts.DashboardText}
+              /*
+                pText={texts.DashboardText}
+              */
               position
               fadeSide="left"
               /*where="/dashboard"*/
@@ -29,7 +31,9 @@ const RouteLinks = () => {
           <div className="flex pt-8">
             <HomeLinks
               buttonTitle={texts.MapsTitle}
-              pText={texts.MapsText}
+              /*
+                pText={texts.DashboardText}
+              */
               fadeSide="left"
               position
               where="/mapas"
@@ -39,7 +43,9 @@ const RouteLinks = () => {
           <div className="flex pt-8">
             <HomeLinks
               buttonTitle={texts.ArchiveTitle}
-              pText={texts.ArchiveText}
+              /*
+                pText={texts.DashboardText}
+              */
               fadeSide="left"
               where="http://192.168.3.99:8080/"
             />
@@ -48,7 +54,9 @@ const RouteLinks = () => {
           <div className="flex pt-8">
             <HomeLinks
               buttonTitle={texts.OpenWorksTitle}
-              pText={texts.OpenWorksText}
+              /*
+                pText={texts.DashboardText}
+              */
               fadeSide="left"
               position
               where="/openWorks/wellHeaders"

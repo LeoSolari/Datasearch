@@ -6,6 +6,9 @@ const surveyController = require("../controllers/survey.controller");
 router.get("/", surveyController.getAllSurveys);
 
 // Ruta para obtener un pozo individual por su ID
-router.get("/:surveyId", surveyController.getAllSurveysById);
+router.get("/id/:surveyId", surveyController.getSurveyById);
+
+// Ruta para obtener una encuesta por su nombre
+router.get("/name/:surveyName", surveyController.getSurveyByName);
 
 module.exports = router;
