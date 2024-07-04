@@ -30,7 +30,28 @@ const Datos = () => {
     dispatch(fetchWells());
     dispatch(fetchSurvey());
     dispatch(fetchlogCurve()); // Fetch log curve data
+
+    // Recuperar estado de búsqueda de sessionStorage
+    const storedSearchTermName = sessionStorage.getItem("searchTermName");
+    const storedSearchTermUWI = sessionStorage.getItem("searchTermUWI");
+    const storedSearchTermCounty = sessionStorage.getItem("searchTermCounty");
+    const storedSearchTermField = sessionStorage.getItem("searchTermField");
+    const storedSearchTermWellNameFree = sessionStorage.getItem("searchTermWellNameFree");
+
+    if (storedSearchTermName) setSearchTermName(storedSearchTermName);
+    if (storedSearchTermUWI) setSearchTermUWI(storedSearchTermUWI);
+    if (storedSearchTermCounty) setSearchTermCounty(storedSearchTermCounty);
+    if (storedSearchTermField) setSearchTermField(storedSearchTermField);
+    if (storedSearchTermWellNameFree) setSearchTermWellNameFree(storedSearchTermWellNameFree);
   }, [dispatch]);
+
+  const handleLinkClick = () => {
+    sessionStorage.setItem("searchTermName", searchTermName);
+    sessionStorage.setItem("searchTermUWI", searchTermUWI);
+    sessionStorage.setItem("searchTermCounty", searchTermCounty);
+    sessionStorage.setItem("searchTermField", searchTermField);
+    sessionStorage.setItem("searchTermWellNameFree", searchTermWellNameFree);
+  };
 
   const filteredWellsByName = filterByName(wellsData, searchTermName);
   const filteredWellsByUWI = filterByUWI(wellsData, searchTermUWI);
@@ -63,12 +84,13 @@ const Datos = () => {
         <table className="w-full table-auto">
           <thead>
             <tr className="bg-gray-900 text-gray-300 uppercase text-sm leading-normal text-center">
-              <th className="py-3 px-6 ">WELL_NAME_FREE</th>
-              <th className="py-3 px-6 ">WELL_UWI</th>
-              <th className="py-3 px-6 ">WL_COUNTY</th>
+              <th className="py-3 px-6 ">WELL NAME</th>
+              <th className="py-3 px-6 ">WELL UWI</th>
+              <th className="py-3 px-6 "><p className="flex flex-col"><span>posgar</span>X COORDINATE (meters)</p></th>
+              <th className="py-3 px-6 "><p className="flex flex-col"><span>posgar</span>Y COORDINATE (meters)</p></th>
               <th className="py-3 px-6 ">FIELD</th>
-              <th className="py-3 px-6">DEPTH DATUM</th>
-              <th className="py-3 px-6">DEPTH DATUM TYPE</th>
+              <th className="py-3 px-6">ELEVATION</th>
+              <th className="py-3 px-6">ELEVATION TYPE</th>
               <th className="py-3 px-6 ">Well</th>
               <th className="py-3 px-6 ">Survey</th>
               <th className="py-3 px-6 ">Log Curve</th>
@@ -88,25 +110,26 @@ const Datos = () => {
                 >
                   <td className="py-3 px-6 ">{well.WELL_NAME_FREE}</td>
                   <td className="py-3 px-6 ">{well.WELL_UWI}</td>
-                  <td className="py-3 px-6 ">{well.WL_COUNTY}</td>
+                  <td className="py-3 px-6 ">{well.WL_SURFACE_X_COORDINATE}</td>
+                  <td className="py-3 px-6 ">{well.WL_SURFACE_Y_COORDINATE}</td>
                   <td className="py-3 px-6 ">{well.FIELD}</td>
                   <td className="py-3 px-6">{parseFloat(well.DEPTH_DATUM).toFixed(2)}</td>
                   <td className="py-3 px-6">{well.DEPTH_DATUM_TYPE}</td>
                   <td className="py-3 px-6 ">
-                    <Link href={`/openWorks/wellHeaders/${well.WELL_ID}`}>
+                    <Link href={`/openWorks/wellHeaders/${well.WELL_ID}`} onClick={handleLinkClick}>
                       <p className="text-white hover:text-green-600">→</p>
                     </Link>
                   </td>
                   <td>
                     {surveyWellIds.includes(well.WELL_ID) && (
-                      <Link href={`/openWorks/survey/${well.WELL_ID}`}>
+                      <Link href={`/openWorks/survey/${well.WELL_ID}`} onClick={handleLinkClick}>
                         <p className="text-white hover:text-green-600">→</p>
                       </Link>
                     )}
                   </td>
                   <td>
                     {logsData.some((log) => log.WELL_ID === well.WELL_ID) && (
-                      <Link href={`/openWorks/logcurve/${well.WELL_ID}`}>
+                      <Link href={`/openWorks/logcurve/${well.WELL_ID}`} onClick={handleLinkClick}>
                         <p className="text-white hover:text-green-600">→</p>
                       </Link>
                     )}

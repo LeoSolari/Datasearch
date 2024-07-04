@@ -39,11 +39,11 @@ const WellDetails = ({ singleWell }) => {
         </div>
 
         <div className="py-4">
-         <h3 className="p-0.5 text-xl">GROUND ELEV</h3>
-         <p>{singleWell.GROUND_ELEV}</p>
+         <h3 className="p-0.5 text-xl">ELEVATION</h3>
+         <p>{singleWell.GROUND_ELEV.toFixed(2)}</p>
         </div>
         <div className="py-4">
-          <h3 className="p-0.5 text-xl">DATUM TYPE</h3>
+          <h3 className="p-0.5 text-xl">ELEVATION TYPE</h3>
           {singleWell.DEPTH_DATUM_TYPE}
         </div>
        

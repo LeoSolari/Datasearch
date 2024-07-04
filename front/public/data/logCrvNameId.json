@@ -962,6 +962,146 @@
     {
       "LOG_CURVE_NAME_ID": 689,
       "Name": "CAL2"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 21,
+      "Name": "CILD"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 145,
+      "Name": "K"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 200,
+      "Name": "PEF"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 279,
+      "Name": "RMF"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 293,
+      "Name": "RS"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 363,
+      "Name": "SFLU"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 526,
+      "Name": "U"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 532,
+      "Name": "ZDEN"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 557,
+      "Name": "CN"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 558,
+      "Name": "CNC"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 566,
+      "Name": "PE"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 571,
+      "Name": "TH"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 639,
+      "Name": "ZCOR"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 721,
+      "Name": "BHV"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 763,
+      "Name": "CAL3"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 843,
+      "Name": "DTS"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1006,
+      "Name": "M2R1"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1007,
+      "Name": "M2R1"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1008,
+      "Name": "M2R3"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1009,
+      "Name": "M2R6"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1010,
+      "Name": "M2R9"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1011,
+      "Name": "M2RX"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1021,
+      "Name": "MCBW"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1128,
+      "Name": "PORA"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1135,
+      "Name": "PORZ"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1140,
+      "Name": "RD"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1164,
+      "Name": "RIPD"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1165,
+      "Name": "RIPM"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1424,
+      "Name": "TransitTimeCoal"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1440,
+      "Name": "CVOL"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1441,
+      "Name": "TEN"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1442,
+      "Name": "TTEN"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1443,
+      "Name": "SPC"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1446,
+      "Name": "CNCF"
+    },
+    {
+      "LOG_CURVE_NAME_ID": 1460,
+      "Name": "RSFL"
     }
   ]
   

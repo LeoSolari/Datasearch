@@ -3,11 +3,11 @@ import Link from 'next/link';
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSurveyByName } from '@/redux/slices/surveySlice';
+import * as XLSX from 'xlsx';
 
 const Page = ({ params }) => {
   const dispatch = useDispatch();
   const { singleSurvey, status, error } = useSelector((state) => state.survey);
-
   const surveyRef = useRef(null); // Ref para el elemento de la tabla de survey
 
   useEffect(() => {
@@ -17,6 +17,53 @@ const Page = ({ params }) => {
     }
   }, [dispatch, params.name]);
 
+  const handleDownloadExcel = () => {
+    const data = singleSurvey.map((survey) => ({
+      'MEASURED DEPTH': parseFloat(survey.MEASURED_DEPTH),
+      'INCLINATION': parseFloat(survey.INCLINATION),
+      'AZIMUTH': parseFloat(survey.AZIMUTH),
+      'TRUE VERT DEPTH': parseFloat(survey.TRUE_VERT_DEPTH),
+      'X OFFSET': parseFloat(survey.X_OFFSET),
+      'Y OFFSET': parseFloat(survey.Y_OFFSET),
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Survey Data');
+
+    const fileName = singleSurvey[0]?.SURVEY_NAME ? `${singleSurvey[0].SURVEY_NAME}.xlsx` : 'survey_data.xlsx';
+    XLSX.writeFile(workbook, fileName);
+  };
+
+  const handleDownloadCSV = () => {
+    const data = singleSurvey.map((survey) => ({
+      'MEASURED DEPTH': parseFloat(survey.MEASURED_DEPTH),
+      'INCLINATION': parseFloat(survey.INCLINATION),
+      'AZIMUTH': parseFloat(survey.AZIMUTH),
+      'TRUE VERT DEPTH': parseFloat(survey.TRUE_VERT_DEPTH),
+      'X OFFSET': parseFloat(survey.X_OFFSET),
+      'Y OFFSET': parseFloat(survey.Y_OFFSET),
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const csv = XLSX.utils.sheet_to_csv(worksheet);
+
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const fileName = singleSurvey[0]?.SURVEY_NAME ? `${singleSurvey[0].SURVEY_NAME}.csv` : 'survey_data.csv';
+
+    if (navigator.msSaveBlob) {
+      navigator.msSaveBlob(blob, fileName);
+    } else {
+      const url = URL.createObjectURL(blob);
+      link.href = url;
+      link.setAttribute('download', fileName);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+
   return (
     <div className="p-24">
       <div className="p-4">
@@ -25,13 +72,33 @@ const Page = ({ params }) => {
             Volver a OpenWorks
           </p>
         </Link>
+        <button 
+          onClick={handleDownloadExcel}
+          className="mt-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+          Descargar Excel
+        </button>
+
+        <button 
+          onClick={handleDownloadCSV}
+          className="mt-4 ml-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+          Descargar CSV
+        </button>
+
+        
+        
+        <button 
+          onClick={() => window.history.back()}
+          className="mt-4 bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 mx-12 rounded">
+          Volver a la página previa
+        </button>
+     
       </div>
 
       <div ref={surveyRef}>
+        <p className='text-center py-4 font-bold text-3xl'>Survey name: {singleSurvey[0]?.SURVEY_NAME} </p>
         <table className="min-w-full bg-white border border-gray-300">
           <thead>
             <tr className="bg-gray-200">
-              <th className="py-2 px-4 border-b">SURVEY_NAME</th>
               <th className="py-2 px-4 border-b">MEASURED DEPTH</th>
               <th className="py-2 px-4 border-b">INCLINATION</th>
               <th className="py-2 px-4 border-b">AZIMUTH</th>
@@ -43,7 +110,6 @@ const Page = ({ params }) => {
           <tbody>
             {singleSurvey.map((survey, i) => (
               <tr key={i} className={`bg-${i % 2 === 0 ? 'white' : 'gray-50'} text-center`}>
-                <td className="py-2 px-4 border-b">{survey.SURVEY_NAME}</td>
                 <td className="py-2 px-4 border-b">{parseFloat(survey.MEASURED_DEPTH).toFixed(2)}</td>
                 <td className="py-2 px-4 border-b">{parseFloat(survey.INCLINATION).toFixed(2)}</td>
                 <td className="py-2 px-4 border-b">{parseFloat(survey.AZIMUTH).toFixed(2)}</td>

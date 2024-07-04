@@ -61,25 +61,29 @@ const LogCurvePage = ({ params }) => {
         <table className="min-w-full bg-white border border-gray-300">
           <thead className="text-center">
             <tr className="bg-gray-200">
-              <th className="py-2 px-4 border-b">LOG CURVE ID</th>
-              <th className="py-2 px-4 border-b">WELL ID</th>
-              <th className="py-2 px-4 border-b">SERVICE NAME</th>
-              <th className="py-2 px-4 border-b">LOG CURVE</th>
-              <th className="py-2 px-4 border-b">TOTAL SAMPLES</th>
-              <th className="py-2 px-4 border-b">TOP DEPTH</th>
-              <th className="py-2 px-4 border-b">BASE DEPTH</th>
+            <th className="py-2 px-4 border-b">LOG CURVE</th>
+            <th className="py-2 px-4 border-b">TOP DEPTH</th>
+            <th className="py-2 px-4 border-b">BASE DEPTH</th>
+            <th className="py-2 px-4 border-b">TOTAL SAMPLES</th>
+            <th className="py-2 px-4 border-b">SERVICE NAME</th>
+            <th className="py-2 px-4 border-b">LOG RUN NUMBER</th>
+            <th className="py-2 px-4 border-b">DEPTH INCREMENT</th>
+            <th className="py-2 px-4 border-b">LOG_CRV_VERSION</th>
+            <th className="py-2 px-4 border-b">LOG_CRV_UNIT_MEAS</th>
             </tr>
           </thead>
           <tbody className="text-center">
             {sortedLogData.map((log, index) => (
               <tr key={index} className="bg-white">
-                <td className="py-2 px-4 border-b">{log.LOG_CURVE_ID}</td>
-                <td className="py-2 px-4 border-b">{log.WELL_ID}</td>
-                <td className="py-2 px-4 border-b">{log.SERVICE_NAME}</td>
                 <td className="py-2 px-4 border-b">{getLogCurveName(log.LOG_CRV_NAME_ID)}</td>
-                <td className="py-2 px-4 border-b">{log.TOTAL_SAMPLES}</td>
                 <td className="py-2 px-4 border-b">{log.TOP_DEPTH.toFixed(2)}</td>
+                <td className="py-2 px-4 border-b">{log.TOTAL_SAMPLES}</td>
                 <td className="py-2 px-4 border-b">{log.BASE_DEPTH.toFixed(2)}</td>
+                <td className="py-2 px-4 border-b">{log.SERVICE_NAME}</td> 
+                <td className="py-2 px-4 border-b">{log.LOG_RUN_NO}</td> 
+                <td className="py-2 px-4 border-b">{log.CRV_INCREM}</td> 
+                <td className="py-2 px-4 border-b">{log.LOG_CRV_VERSION}</td> 
+                <td className="py-2 px-4 border-b">{log.LOG_CRV_UNIT_MEAS}</td> 
               </tr>
             ))}
           </tbody>

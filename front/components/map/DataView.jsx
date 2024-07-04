@@ -8,7 +8,7 @@ const DataView = ({ UWI, lat, long }) => {
   return (
     <MapContainer center={[lat, long]} zoom={6} style={{ height: "400px" }}>
       <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        url="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}"
         noWrap={true}
         minZoom={4}
       />
