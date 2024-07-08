@@ -72,6 +72,8 @@ const Datos = () => {
             onChange={(e) => setSearchTermWellNameFree(e.target.value)}
           />
 
+          <Link href={`/openWorks/picks`}>Go to PICKS</Link>
+
           <Input
             placeholder="Search by UWI..."
             value={searchTermUWI}

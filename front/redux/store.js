@@ -6,6 +6,7 @@ import archivoSlice from "./slices/archivoSlice";
 import { logCurveSlice } from "./slices/logcurveSlice";
 import languageSlice from "./slices/languageSlice";
 import surveyHdrSlice from "./slices/surveyHdrSlice";
+import pickSlice from "./slices/pickSlice"; // Importa el slice de picks
 
 const store = configureStore({
   reducer: {
@@ -14,8 +15,9 @@ const store = configureStore({
     survey: surveySlice,
     logCurve: logCurveSlice.reducer,
     archivo: archivoSlice,
-    language : languageSlice,
-    surveyHdr: surveyHdrSlice
+    language: languageSlice,
+    surveyHdr: surveyHdrSlice,
+    picks: pickSlice, // Añade el reducer de picks aquí
   },
 });
 

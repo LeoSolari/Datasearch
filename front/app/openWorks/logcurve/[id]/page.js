@@ -77,11 +77,11 @@ const LogCurvePage = ({ params }) => {
               <tr key={index} className="bg-white">
                 <td className="py-2 px-4 border-b">{getLogCurveName(log.LOG_CRV_NAME_ID)}</td>
                 <td className="py-2 px-4 border-b">{log.TOP_DEPTH.toFixed(2)}</td>
-                <td className="py-2 px-4 border-b">{log.TOTAL_SAMPLES}</td>
                 <td className="py-2 px-4 border-b">{log.BASE_DEPTH.toFixed(2)}</td>
+                <td className="py-2 px-4 border-b">{log.TOTAL_SAMPLES}</td>
                 <td className="py-2 px-4 border-b">{log.SERVICE_NAME}</td> 
                 <td className="py-2 px-4 border-b">{log.LOG_RUN_NO}</td> 
-                <td className="py-2 px-4 border-b">{log.CRV_INCREM}</td> 
+                <td className="py-2 px-4 border-b">{log.CRV_INCREM.toFixed(2)}</td> 
                 <td className="py-2 px-4 border-b">{log.LOG_CRV_VERSION}</td> 
                 <td className="py-2 px-4 border-b">{log.LOG_CRV_UNIT_MEAS}</td> 
               </tr>

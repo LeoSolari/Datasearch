@@ -14,6 +14,8 @@ const logCurveRoutes = require("../src/services/openworks/routes/logCurve.route.
 
 const mnemonicgroupmemberRoutes = require("../src/services/openworks/routes/mnemonicgroupmember.route.js");
 
+const surfacePicksRoutes = require("../src/services/openworks/routes/surfacePicks.route.js")
+
 const archivoRoutes = require("./services/archivoDigital/archivo.route.js");
 
 const userRoutes = require("./routes/users.routes.js");
@@ -47,6 +49,10 @@ app.use("/api/surveyhdr", surveyHdrRoutes)
 app.use("/api/logCurve", logCurveRoutes);
 
 // 
+
+app.use("/api/picks", surfacePicksRoutes);
+
+//
 
 app.use("/api/mnemonicgroupmember", mnemonicgroupmemberRoutes)
 
