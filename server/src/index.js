@@ -16,6 +16,8 @@ const mnemonicgroupmemberRoutes = require("../src/services/openworks/routes/mnem
 
 const surfacePicksRoutes = require("../src/services/openworks/routes/surfacePicks.route.js")
 
+const surfNameRoutes = require("../src/services/openworks/routes/surfName.route.js")
+
 const archivoRoutes = require("./services/archivoDigital/archivo.route.js");
 
 const userRoutes = require("./routes/users.routes.js");
@@ -40,7 +42,7 @@ app.use("/api/wells", wellRoutes);
 
 app.use("/api/surveys", surveyRoutes);
 
-//
+//  Ruta header routes
 
 app.use("/api/surveyhdr", surveyHdrRoutes)
 
@@ -48,11 +50,15 @@ app.use("/api/surveyhdr", surveyHdrRoutes)
 
 app.use("/api/logCurve", logCurveRoutes);
 
-// 
+// Surface Picks Routes
 
 app.use("/api/picks", surfacePicksRoutes);
 
-//
+// Surface Name Routes
+
+app.use("/api/surfName", surfNameRoutes);
+
+// Mnemonic group member
 
 app.use("/api/mnemonicgroupmember", mnemonicgroupmemberRoutes)
 

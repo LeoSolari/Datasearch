@@ -112,8 +112,8 @@ const Datos = () => {
                 >
                   <td className="py-3 px-6 ">{well.WELL_NAME_FREE}</td>
                   <td className="py-3 px-6 ">{well.WELL_UWI}</td>
-                  <td className="py-3 px-6 ">{well.WL_SURFACE_X_COORDINATE}</td>
-                  <td className="py-3 px-6 ">{well.WL_SURFACE_Y_COORDINATE}</td>
+                  <td className="py-3 px-6 ">{well.WL_SURFACE_X_COORDINATE.toFixed(2)}</td>
+                  <td className="py-3 px-6 ">{well.WL_SURFACE_Y_COORDINATE.toFixed(2)}</td>
                   <td className="py-3 px-6 ">{well.FIELD}</td>
                   <td className="py-3 px-6">{parseFloat(well.DEPTH_DATUM).toFixed(2)}</td>
                   <td className="py-3 px-6">{well.DEPTH_DATUM_TYPE}</td>

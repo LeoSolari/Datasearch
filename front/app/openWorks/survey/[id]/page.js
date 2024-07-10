@@ -4,23 +4,22 @@ import React, { useEffect, useRef } from 'react';
 import { fetchSurveyById } from '@/redux/slices/surveySlice';
 import { fetchSurveyHdrById } from '@/redux/slices/surveyHdrSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchSurveyByName } from '@/redux/slices/surveySlice';
+import { fetchWellById } from '@/redux/slices/wellSlice';
 
 const Page = ({ params }) => {
   const dispatch = useDispatch();
   const { singleSurvey, status, error } = useSelector((state) => state.survey);
   const { singleSurveyHdr, statusHdr, errorHdr } = useSelector((state) => state.surveyHdr);
-
-  const headerRef = useRef(null); // Ref para el elemento de la tabla de header
-  const surveyRef = useRef(null); // Ref para el elemento de la tabla de survey
+  const { singleWell } = useSelector((state) => state.wells);
 
   useEffect(() => {
     if (params.id) {
       dispatch(fetchSurveyById(params.id));
       dispatch(fetchSurveyHdrById(params.id));
-
+      dispatch(fetchWellById(params.id))
     }
   }, [dispatch, params.id]);
+
 
   if (status === 'loading' || statusHdr === 'loading') {
     return <div className="text-center text-gray-600">Loading...</div>;
@@ -29,6 +28,8 @@ const Page = ({ params }) => {
   if (status === 'failed' || statusHdr === 'failed') {
     return <div className="text-center text-red-600">Error: {error || errorHdr}</div>;
   }
+
+  console.log(singleWell)
 
   return (
     <div className="p-24">
@@ -40,7 +41,7 @@ const Page = ({ params }) => {
         </Link>
       </div>
 
-      <h1 className="text-3xl font-bold mb-6 text-center">Surveys</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center">{singleWell?.WELL_NAME_FREE}</h1>
 
       <div>
         <h2 className="text-2xl font-bold mb-4">Survey Header</h2>
@@ -85,8 +86,6 @@ const Page = ({ params }) => {
           </tbody>
         </table>
       </div>
-
-      
     </div>
   );
 };
