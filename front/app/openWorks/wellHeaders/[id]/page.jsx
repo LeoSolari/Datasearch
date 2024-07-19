@@ -1,10 +1,10 @@
-'use client'
+'use client';
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchWellById } from "@/redux/slices/wellSlice";
 import { fetchLogCurveById } from "@/redux/slices/logcurveSlice";
-import { fetchSurfNameBySurfId } from "@/redux/slices/surfNameSlice";
 import { fetchCombinedPicks } from "../../../../redux/slices/combinedPickSlice";
+import { fetchSurveyById } from "@/redux/slices/surveySlice"; // Import the fetchSurveyById action
 import Link from "next/link";
 import WellDetails from "@/components/wellDetails/WellDetails";
 
@@ -13,6 +13,7 @@ const Page = ({ params }) => {
   const { singleWell, status: wellStatus, error: wellError } = useSelector((state) => state.wells);
   const { singleLog, status: logStatus, error: logError } = useSelector((state) => state.logCurve);
   const { picks: combinedPicks, loading: combinedPicksLoading } = useSelector((state) => state.combinedPicks);
+  const { singleSurvey, status: surveyStatus, error: surveyError } = useSelector((state) => state.survey); // Add survey selector
 
   const [surveyData, setSurveyData] = useState([]);
   const [isSurveyOpen, setSurveyOpen] = useState(false);
@@ -40,12 +41,20 @@ const Page = ({ params }) => {
 
   const handleSurveyClick = () => {
     setSurveyOpen(!isSurveyOpen);
-    if (!isSurveyOpen && surveyData.length === 0) {
+    if (!isSurveyOpen) {
       setLoadingSurvey(true);
-      setTimeout(() => {
-        setSurveyData([{ id: params.id, name: `Ir al survey` }]);
-        setLoadingSurvey(false);
-      }, 1000);
+      dispatch(fetchSurveyById(params.id)) // Fetch survey data by WELL_ID
+        .then((response) => {
+          if (response.payload && response.payload.length > 0) {
+            setSurveyData([{ id: params.id, name: `Ir al survey` }]);
+          } else {
+            setSurveyData([]);
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching survey data:", error);
+        })
+        .finally(() => setLoadingSurvey(false));
     }
   };
 
@@ -53,12 +62,9 @@ const Page = ({ params }) => {
     setPicksOpen(!isPicksOpen);
     if (!isPicksOpen) {
       setLoadingPicks(true);
-      
-      // Clear old picks data
       dispatch(fetchCombinedPicks(params.id))
         .then((response) => {
           if (response.payload && response.payload.length > 0) {
-            // Set the new picks data
             // Update the state with the new picks
           } else {
             // Handle no picks scenario
@@ -70,7 +76,6 @@ const Page = ({ params }) => {
         .finally(() => setLoadingPicks(false));
     }
   };
-  
 
   const handleLogCurveClick = () => {
     setLogCurveOpen(!isLogCurveOpen);
@@ -113,12 +118,14 @@ const Page = ({ params }) => {
                 <div className="bg-gray-800 p-4 rounded mt-2">
                   {loadingSurvey ? (
                     <p className="text-white">Loading...</p>
-                  ) : (
+                  ) : surveyData.length > 0 ? (
                     surveyData.map((survey) => (
                       <Link href={`http://localhost/openWorks/survey/${survey.id}`} key={survey.id}>
                         <p className="text-white cursor-pointer">{survey.name}</p>
                       </Link>
                     ))
+                  ) : (
+                    <p className="text-white">No hay survey para este pozo.</p>
                   )}
                 </div>
               )}
@@ -146,13 +153,13 @@ const Page = ({ params }) => {
                           </tr>
                         </thead>
                         <tbody className="text-center">
-                        {combinedPicks.map((pick, index) => (
-                          <tr key={index} className="bg-gray-800">
-                          <td className="py-2 px-4 border-b border-gray-600">{pick.LOCAL_NAME || pick.PICK_SURF_ID}</td>
-                          <td className="py-2 px-4 border-b border-gray-600">{typeof pick.PICK_DEPTH === 'number' ? pick.PICK_DEPTH.toFixed(2) : 'N/A'}</td>
-                          <td className="py-2 px-4 border-b border-gray-600">{pick.ORIGINAL_DATA_SOURCE}</td>
-                          </tr>
-                        ))}
+                          {combinedPicks.map((pick, index) => (
+                            <tr key={index} className="bg-gray-800">
+                              <td className="py-2 px-4 border-b border-gray-600">{pick.LOCAL_NAME || pick.PICK_SURF_ID}</td>
+                              <td className="py-2 px-4 border-b border-gray-600">{typeof pick.PICK_DEPTH === 'number' ? pick.PICK_DEPTH.toFixed(2) : 'N/A'}</td>
+                              <td className="py-2 px-4 border-b border-gray-600">{pick.ORIGINAL_DATA_SOURCE}</td>
+                            </tr>
+                          ))}
                         </tbody>
                       </table>
                     </>
@@ -187,16 +194,16 @@ const Page = ({ params }) => {
                         {sortedLogData.map((log, index) => (
                           <tr key={index} className="bg-gray-800">
                             <td className="py-2 px-4 border-b border-gray-600">{log.LOG_CRV_NAME}</td>
-                            <td className="py-2 px-4 border-b border-gray-600">{log.TOP_DEPTH}</td>
-                            <td className="py-2 px-4 border-b border-gray-600">{log.BASE_DEPTH}</td>
+                            <td className="py-2 px-4 border-b border-gray-600">{log.TOP_DEPTH.toFixed(2)}</td>
+                            <td className="py-2 px-4 border-b border-gray-600">{log.BASE_DEPTH.toFixed(2)}</td>
                             <td className="py-2 px-4 border-b border-gray-600">{log.TOTAL_SAMPLES}</td>
-                            <td className="py-2 px-4 border-b border-gray-600">{log.SERVICE_NAME}</td>
+                            <td className="py-2 px-4 border-b border-gray-600">{log.PERFORATION}</td>
                           </tr>
                         ))}
                       </tbody>
                     </table>
                   ) : (
-                    <p className="text-white">No hay datos de log curve para este pozo.</p>
+                    <p className="text-white">No hay log curves para este pozo.</p>
                   )}
                 </div>
               )}
@@ -204,7 +211,7 @@ const Page = ({ params }) => {
           </div>
         </div>
       ) : (
-        <p className="text-white text-center">Seleccione un pozo para ver los detalles.</p>
+        <p className="text-white">Loading well data...</p>
       )}
     </div>
   );

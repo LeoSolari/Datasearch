@@ -30,6 +30,22 @@ const Datos = () => {
     dispatch(fetchSurvey());
     dispatch(fetchlogCurve());
     dispatch(fetchAllPicks());
+
+    const savedSearchTerms = JSON.parse(localStorage.getItem("searchTerms"));
+    if (savedSearchTerms) {
+      setSearchTermWellNameFree(savedSearchTerms.searchTermWellNameFree);
+      setSearchTermUWI(savedSearchTerms.searchTermUWI);
+      setSearchTermField(savedSearchTerms.searchTermField);
+      setSearchTermPicks(savedSearchTerms.searchTermPicks);
+      setSearchTermLogCurve(savedSearchTerms.searchTermLogCurve);
+      setSelectedSurveyName(savedSearchTerms.selectedSurveyName);
+      setSelectedLogCurveId(savedSearchTerms.selectedLogCurveId);
+    }
+
+    const savedSearchResults = JSON.parse(localStorage.getItem("searchResults"));
+    if (savedSearchResults) {
+      setSearchResults(savedSearchResults);
+    }
   }, [dispatch]);
 
   const handleSearch = () => {
@@ -44,6 +60,18 @@ const Datos = () => {
     );
 
     setSearchResults(results);
+
+    const searchTerms = {
+      searchTermWellNameFree,
+      searchTermUWI,
+      searchTermField,
+      searchTermPicks,
+      searchTermLogCurve,
+      selectedSurveyName,
+      selectedLogCurveId,
+    };
+    localStorage.setItem("searchTerms", JSON.stringify(searchTerms));
+    localStorage.setItem("searchResults", JSON.stringify(results));
   };
 
   const handleClearFilters = () => {
@@ -55,10 +83,21 @@ const Datos = () => {
     setSelectedSurveyName("");
     setSelectedLogCurveId("");
     setSearchResults([]);
+    localStorage.removeItem("searchTerms"); // Clear search terms from localStorage
+    localStorage.removeItem("searchResults"); // Clear search results from localStorage
   };
 
   const handleLinkClick = () => {
-    sessionStorage.setItem("searchTermWellNameFree", searchTermWellNameFree);
+    const searchTerms = {
+      searchTermWellNameFree,
+      searchTermUWI,
+      searchTermField,
+      searchTermPicks,
+      searchTermLogCurve,
+      selectedSurveyName,
+      selectedLogCurveId,
+    };
+    localStorage.setItem("searchTerms", JSON.stringify(searchTerms));
   };
 
   const logCurveWellIds = Array.isArray(logsData) ? logsData.map(log => log.WELL_ID) : [];
@@ -184,12 +223,10 @@ const Datos = () => {
               </tr>
             ))}
           </tbody>
-        </table>      
-        </div>
+        </table>
+      </div>
     </div>
   );
 };
 
 export default Datos;
-
-     
