@@ -14,12 +14,13 @@ const Datos = () => {
   const wellsData = useSelector((state) => state.wells.wells);
   const surveysData = useSelector((state) => state.survey.survey);
   const logsData = useSelector((state) => state.logCurve.logs);
-  const picksData = useSelector((state) => state.wellPicks.picks) || []; // Default to empty array
+  const picksData = useSelector((state) => state.wellPicks.picks) || [];
 
   const [searchTermWellNameFree, setSearchTermWellNameFree] = useState("");
   const [searchTermUWI, setSearchTermUWI] = useState("");
   const [searchTermField, setSearchTermField] = useState("");
   const [searchTermPicks, setSearchTermPicks] = useState("");
+  const [searchTermLogCurve, setSearchTermLogCurve] = useState(""); // State for LOG_CRV_NAME
   const [searchResults, setSearchResults] = useState([]);
   const [selectedSurveyName, setSelectedSurveyName] = useState("");
   const [selectedLogCurveId, setSelectedLogCurveId] = useState("");
@@ -38,8 +39,10 @@ const Datos = () => {
       (searchTermField === "" || well.FIELD.toLowerCase().includes(searchTermField.toLowerCase())) &&
       (selectedSurveyName === "" || surveysData.some(survey => survey.WELL_ID === well.WELL_ID && survey.SURVEY_NAME.toLowerCase().includes(selectedSurveyName.toLowerCase()))) &&
       (selectedLogCurveId === "" || logCurveWellIds.includes(well.WELL_ID)) &&
-      (searchTermPicks === "" || picksData.some(pick => pick.LOCAL_NAME && pick.LOCAL_NAME.toLowerCase().includes(searchTermPicks.toLowerCase()) && pick.WELL_ID === well.WELL_ID))
+      (searchTermPicks === "" || picksData.some(pick => pick.LOCAL_NAME && pick.LOCAL_NAME.toLowerCase().includes(searchTermPicks.toLowerCase()) && pick.WELL_ID === well.WELL_ID)) &&
+      (searchTermLogCurve === "" || logsData.some(log => log.LOG_CRV_NAME.toLowerCase().includes(searchTermLogCurve.toLowerCase()) && log.WELL_ID === well.WELL_ID))
     );
+
     setSearchResults(results);
   };
 
@@ -48,6 +51,7 @@ const Datos = () => {
     setSearchTermUWI("");
     setSearchTermField("");
     setSearchTermPicks("");
+    setSearchTermLogCurve(""); // Clear the LOG_CRV_NAME search term
     setSelectedSurveyName("");
     setSelectedLogCurveId("");
     setSearchResults([]);
@@ -59,20 +63,20 @@ const Datos = () => {
 
   const logCurveWellIds = Array.isArray(logsData) ? logsData.map(log => log.WELL_ID) : [];
 
-  const filteredResults = searchResults.filter((well) =>
-    logsData.some(log => log.WELL_ID === well.WELL_ID)
-  );
-
   const handleSurveyNameChange = (event) => {
     setSelectedSurveyName(event.target.value);
   };
 
-  const handleLogCurveSelection = (logCurveId) => {
-    setSelectedLogCurveId(logCurveId);
+  const handleLogCurveSelection = (event) => {
+    setSelectedLogCurveId(event.target.value);
   };
 
   const handlePicksSearch = (event) => {
     setSearchTermPicks(event.target.value);
+  };
+
+  const handleLogCurveSearch = (event) => {
+    setSearchTermLogCurve(event.target.value);
   };
 
   return (
@@ -103,14 +107,14 @@ const Datos = () => {
               onChange={handleSurveyNameChange}
             />
             <Input
-              placeholder="Select Log Curve"
-              value={selectedLogCurveId}
-              onChange={(e) => handleLogCurveSelection(e.target.value)}
-            />
-             <Input
               placeholder="Search by Picks..."
               value={searchTermPicks}
               onChange={handlePicksSearch}
+            />
+            <Input
+              placeholder="Search by Log Curve Name..."
+              value={searchTermLogCurve} // Use searchTermLogCurve
+              onChange={handleLogCurveSearch} // Handle change
             />
           </div>
         </div>
@@ -154,7 +158,7 @@ const Datos = () => {
             </tr>
           </thead>
           <tbody className="text-gray-300 bg-slate-900 text-sm font-light">
-            {filteredResults.map((well) => (
+            {searchResults.map((well) => (
               <tr
                 key={well.WELL_UWI}
                 className="border-b border-gray-200 hover:bg-slate-800 hover:text-blue-50 text-center"
@@ -172,35 +176,20 @@ const Datos = () => {
                   </Link>
                 </td>
                 <td className="py-3 px-6">
-                  {surveysData.some(survey => survey.WELL_ID === well.WELL_ID && survey.SURVEY_NAME.toLowerCase().includes(selectedSurveyName.toLowerCase())) ? (
-                    <Link href={`/openWorks/survey/${well.WELL_ID}`} onClick={handleLinkClick}>
-                      Open Survey
-                    </Link>
-                  ) : (
-                    "No Survey"
-                  )}
+                  {surveysData.some(survey => survey.WELL_ID === well.WELL_ID) ? "Yes" : "No"}
                 </td>
                 <td className="py-3 px-6">
-                  {logCurveWellIds.includes(well.WELL_ID) ? (
-                    <Link href={`/openWorks/logcurve/${well.WELL_ID}`} onClick={handleLinkClick}>
-                      Open Log Curve
-                    </Link>
-                  ) : (
-                    "No Log Curve"
-                  )}
+                  {logsData.some(log => log.WELL_ID === well.WELL_ID) ? "Yes" : "No"}
                 </td>
               </tr>
             ))}
           </tbody>
-        </table>
-        {selectedLogCurveId && (
-          <div className="mt-4 text-gray-300">
-            Selected Log Curve ID: {selectedLogCurveId}
-          </div>
-        )}
-      </div>
+        </table>      
+        </div>
     </div>
   );
 };
 
 export default Datos;
+
+     
