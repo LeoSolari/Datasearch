@@ -1,7 +1,6 @@
 require("dotenv").config();
 const sqlite3 = require("sqlite3").verbose();
 
-// Obtener todos los registros de LOG_CURVE_HEADER
 exports.getAllLogCurves = (req, res) => {
   const db = new sqlite3.Database(
     process.env.DB_PATH_NEUQUINA_REG,
@@ -12,7 +11,7 @@ exports.getAllLogCurves = (req, res) => {
         res.status(500).json({ error: "Error al abrir la base de datos" });
       } else {
         db.all(
-          "SELECT LOG_CURVE_ID, WELL_ID, SERVICE_NAME, LOG_CRV_NAME_ID, TOTAL_SAMPLES, TOP_DEPTH, BASE_DEPTH FROM LOG_CURVE_HEADER",
+          "SELECT lh.LOG_CRV_NAME_ID, lh.WELL_ID, lh.SERVICE_NAME, lh.LOG_CRV_NAME_ID, vc.LOG_CRV_NAME, lh.TOTAL_SAMPLES, lh.TOP_DEPTH, lh.BASE_DEPTH FROM LOG_CURVE_HEADER lh INNER JOIN VC_LOG_CRV_NAME vc ON lh.LOG_CRV_NAME_ID = vc.LOG_CRV_NAME_ID",
           (err, rows) => {
             if (err) {
               console.error("Error al ejecutar la consulta", err.message);
@@ -33,7 +32,6 @@ exports.getAllLogCurves = (req, res) => {
   );
 };
 
-// Obtener un registro de LOG_CURVE_HEADER por su LOG_CURVE_ID
 exports.getAllLogCurvesById = (req, res) => {
   const logId = req.params.logId;
 
@@ -46,7 +44,7 @@ exports.getAllLogCurvesById = (req, res) => {
         res.status(500).json({ error: "Error al abrir la base de datos" });
       } else {
         db.all(
-          "SELECT WELL_ID, LOG_CURVE_ID, SERVICE_NAME, LOG_CRV_NAME_ID, TOTAL_SAMPLES, TOP_DEPTH, BASE_DEPTH, LOG_RUN_NO, CRV_INCREM, LOG_CRV_VERSION, LOG_CRV_UNIT_MEAS FROM LOG_CURVE_HEADER WHERE WELL_ID = ?",
+          "SELECT lh.WELL_ID, lh.LOG_CRV_NAME_ID, lh.SERVICE_NAME, lh.LOG_CRV_NAME_ID, vc.LOG_CRV_NAME, lh.TOTAL_SAMPLES, lh.TOP_DEPTH, lh.BASE_DEPTH, lh.LOG_RUN_NO, lh.CRV_INCREM, lh.LOG_CRV_VERSION, lh.LOG_CRV_UNIT_MEAS FROM LOG_CURVE_HEADER lh INNER JOIN VC_LOG_CRV_NAME vc ON lh.LOG_CRV_NAME_ID = vc.LOG_CRV_NAME_ID WHERE lh.WELL_ID = ?",
           [logId],
           (err, rows) => {
             if (err) {

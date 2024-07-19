@@ -8,6 +8,8 @@ import languageSlice from "./slices/languageSlice";
 import surveyHdrSlice from "./slices/surveyHdrSlice";
 import pickSlice from "./slices/pickSlice"; 
 import surfNameReducer from './slices/surfNameSlice'
+import combinedPicksReducer from './slices/combinedPickSlice'
+import wellPicksReducer from './slices/wellPickSlice'
 
 const store = configureStore({
   reducer: {
@@ -19,7 +21,9 @@ const store = configureStore({
     language: languageSlice,
     surveyHdr: surveyHdrSlice,
     picks: pickSlice, // Añade el reducer de picks aquí
-    surfNames: surfNameReducer
+    surfNames: surfNameReducer,
+    combinedPicks: combinedPicksReducer,
+    wellPicks: wellPicksReducer
   },
 });
 

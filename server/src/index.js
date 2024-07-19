@@ -18,9 +18,13 @@ const surfacePicksRoutes = require("../src/services/openworks/routes/surfacePick
 
 const surfNameRoutes = require("../src/services/openworks/routes/surfName.route.js")
 
+const crvNameRoutes = require("../src/services/openworks/routes/crvName.route.js")
+
 const archivoRoutes = require("./services/archivoDigital/archivo.route.js");
 
 const userRoutes = require("./routes/users.routes.js");
+
+const combinedPicksRoutes = require("../src/services/openworks/routes/combinedPicks.route");
 
 const indexRoutes = require("./routes/index.routes.js");
 
@@ -50,19 +54,24 @@ app.use("/api/surveyhdr", surveyHdrRoutes)
 
 app.use("/api/logCurve", logCurveRoutes);
 
+app.use("/api/surfName", surfNameRoutes);
+
+app.use("/api", combinedPicksRoutes);
+
 // Surface Picks Routes
 
 app.use("/api/picks", surfacePicksRoutes);
 
 // Surface Name Routes
 
-app.use("/api/surfName", surfNameRoutes);
 
 // Mnemonic group member
 
 app.use("/api/mnemonicgroupmember", mnemonicgroupmemberRoutes)
 
 // Ruta para obtener los archivos de la carpeta
+
+app.use("/api/crvNames", crvNameRoutes);
 
 app.use("/api/archivos", archivoRoutes);
 

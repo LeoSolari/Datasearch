@@ -70,7 +70,7 @@ const Contact = () => {
 
   return (
     <div className="xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden">
-      <motion.div
+      <div
         variants={fadeIn("left", "tween", 0.4, 1)}
         className="flex-[0.75] bg-blue-900 p-8 rounded-2xl text-white"
       >
@@ -109,13 +109,8 @@ const Contact = () => {
           </label>
           <Button type="submit">{loading ? "Enviando. . ." : "Enviar"}</Button>
         </form>
-      </motion.div>
-      <motion.div
-        variants={slideIn("right", "tween", 0.2, 1)}
-        className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px] "
-      >
-        <EarthCanvas />
-      </motion.div>
+      </div>
+     
     </div>
   );
 };
