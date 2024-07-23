@@ -1,21 +1,61 @@
 "use client";
-import { useEffect } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { useEffect, useState } from "react";
+import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
-import Link from "next/link";
+import shp from 'shpjs'; // Asegúrate de que shpjs está instalado
+import L from 'leaflet';
 
-const MapView = ({ markers }) => {
+const MapView = ({ markers, shapefileUrl }) => {
+  const [map, setMap] = useState(null);
+  const [geoJsonLayer, setGeoJsonLayer] = useState(null);
+
+  const MapInitializer = () => {
+    const leafletMap = useMap();
+    useEffect(() => {
+      setMap(leafletMap);
+    }, [leafletMap]);
+
+    return null;
+  };
+
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      import("leaflet-defaulticon-compatibility");
-      import(
-        "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css"
-      );
-    }
-  }, []);
+    console.log("Shapefile URL changed:", shapefileUrl); // Agrega esta línea para verificar los cambios
+  
+    const fetchShapefile = async () => {
+      if (!shapefileUrl || !map) return;
+    
+      const correctedShapefileUrl = `http://localhost:4000${shapefileUrl}`;
+      console.log("Fetching shapefile from:", correctedShapefileUrl); // Verifica la URL en consola
+    
+      try {
+        const response = await fetch(correctedShapefileUrl);
+        if (!response.ok) {
+          throw new Error('Failed to fetch shapefile');
+        }
+    
+        const arrayBuffer = await response.arrayBuffer();
+        const geojson = await shp(arrayBuffer);
+    
+        console.log("GeoJSON data:", geojson); // Verifica el contenido del GeoJSON
+    
+        // Limpia el mapa antes de agregar nuevos datos
+        if (geoJsonLayer) {
+          map.removeLayer(geoJsonLayer);
+        }
+    
+        const newGeoJsonLayer = L.geoJSON(geojson).addTo(map);
+        setGeoJsonLayer(newGeoJsonLayer);
+      } catch (error) {
+        console.error("Error loading shapefile:", error);
+      }
+    };
+    
 
+  
+    fetchShapefile();
+  }, [shapefileUrl, map]);
   if (!markers || markers.length === 0) {
     return <div>No hay marcadores disponibles</div>;
   }
@@ -32,20 +72,8 @@ const MapView = ({ markers }) => {
         noWrap={true}
         minZoom={3}
       />
-      {markers.map((marker) => (
-        <Marker key={marker.uwi} position={[marker.lat, marker.long]}>
-          <Popup>
-            <Link
-              href={`/openWorks/wellHeaders/${marker.id}`}
-              className="text-blue-500 hover:underline"
-            >
-              WELL NAME: {marker.uwi}
-            </Link>
-            <p>Lat: {marker.lat}</p>
-            <p>Long: {marker.long}</p>
-          </Popup>
-        </Marker>
-      ))}
+      
+      <MapInitializer />
     </MapContainer>
   );
 };

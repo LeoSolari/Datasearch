@@ -186,7 +186,7 @@ const Page = ({ params }) => {
                           <th className="py-2 px-4 border-b border-gray-600">LOG CURVE</th>
                           <th className="py-2 px-4 border-b border-gray-600">TOP DEPTH</th>
                           <th className="py-2 px-4 border-b border-gray-600">BASE DEPTH</th>
-                          <th className="py-2 px-4 border-b border-gray-600">TOTAL SAMPLES</th>
+
                           <th className="py-2 px-4 border-b border-gray-600">PERFORATION</th>
                         </tr>
                       </thead>
@@ -196,7 +196,7 @@ const Page = ({ params }) => {
                             <td className="py-2 px-4 border-b border-gray-600">{log.LOG_CRV_NAME}</td>
                             <td className="py-2 px-4 border-b border-gray-600">{log.TOP_DEPTH.toFixed(2)}</td>
                             <td className="py-2 px-4 border-b border-gray-600">{log.BASE_DEPTH.toFixed(2)}</td>
-                            <td className="py-2 px-4 border-b border-gray-600">{log.TOTAL_SAMPLES}</td>
+                           
                             <td className="py-2 px-4 border-b border-gray-600">{log.PERFORATION}</td>
                           </tr>
                         ))}

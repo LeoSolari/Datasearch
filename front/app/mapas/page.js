@@ -1,3 +1,5 @@
+// Mapas.js
+
 "use client";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -7,6 +9,7 @@ import Link from "next/link";
 import es from "@/public/es";
 import en from "@/public/en";
 import { useSelector } from "react-redux";
+import UploadShapefile from "@/components/map/uploadShapeFile";
 
 const MapView = dynamic(() => import("@/components/map/MapView"), {
   ssr: false,
@@ -15,9 +18,10 @@ const MapView = dynamic(() => import("@/components/map/MapView"), {
 const Page = () => {
   const dispatch = useDispatch();
   const [wellMarkers, setWellMarkers] = useState([]);
-  const isSpanish = useSelector((state) => state.language.isSpanish)
+  const [shapefileUrl, setShapefileUrl] = useState("");
+  const isSpanish = useSelector((state) => state.language.isSpanish);
 
-  const texts = isSpanish ? es : en
+  const texts = isSpanish ? es : en;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,19 +39,22 @@ const Page = () => {
     fetchData();
   }, [dispatch]);
 
+  const handleUpload = (url) => {
+    console.log("Shapefile URL:", url); // Agrega esta línea para verificar el URL
+    setShapefileUrl(url);
+  };
+
   return (
     <div className="mx-auto h-full py-24 bg-gray-900 text-blue-200">
       <div className="text-center">
         <h1 className="text-3xl font-bold mb-4">Mapa</h1>
-        <p className="text-lg mb-4">
-          {texts.MapCoords}
-        </p>
+        <p className="text-lg mb-4">{texts.MapCoords}</p>
       </div>
 
       <div className="flex justify-around bg-white rounded-lg shadow-md overflow-hidden">
-        <MapView markers={wellMarkers} />
-       {
-        /*
+        <MapView markers={wellMarkers} shapefileUrl={shapefileUrl} />
+        {
+          /*
            <ul className="flex justify-between flex-col text-center">
           <li className="text-gray-700 hover:underline underline-offset-8">
             <Link href={"/openWorks/wellHeaders/203"}>
@@ -76,8 +83,9 @@ const Page = () => {
           </li>
         </ul>
         */
-       }
+        }
       </div>
+      <UploadShapefile onUpload={handleUpload} />
     </div>
   );
 };
