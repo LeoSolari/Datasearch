@@ -18,9 +18,9 @@ exports.getPicksWithSurfNamesByWellId = (req, res) => {
                 res.status(500).json({ error: "Error al abrir la base de datos" });
             } else {
                 const query = `
-                    SELECT p.WELL_ID, p.PICK_SURF_ID, p.PICK_DEPTH, p.ORIGINAL_DATA_SOURCE, s.LOCAL_NAME
+                    SELECT p.WELL_ID, p.PICK_SURF_ID, p.PICK_OBS_NO, p.PICK_CONF_FACT , p.PICK_DEPTH, p.DATA_SOURCE, PICK_SURF_NAME
                     FROM PICK p
-                    LEFT JOIN SURF s ON p.PICK_SURF_ID = s.PICK_SURF_ID
+                    LEFT JOIN VC_PICKSURF_NAME s ON p.PICK_SURF_ID = s.PICK_SURF_ID
                     WHERE p.WELL_ID = ?;
                 `;
 
@@ -57,9 +57,9 @@ exports.getAllCombinedData = (req, res) => {
                 res.status(500).json({ error: "Error al abrir la base de datos" });
             } else {
                 const query = `
-                    SELECT p.WELL_ID, p.PICK_SURF_ID, p.PICK_DEPTH, p.ORIGINAL_DATA_SOURCE, s.LOCAL_NAME
+                    SELECT p.WELL_ID, p.PICK_SURF_ID, p.PICK_OBS_NO, p.PICK_CONF_FACT , p.PICK_DEPTH, p.DATA_SOURCE, PICK_SURF_NAME
                     FROM PICK p
-                    LEFT JOIN SURF s ON p.PICK_SURF_ID = s.PICK_SURF_ID;
+                    LEFT JOIN VC_PICKSURF_NAME s ON p.PICK_SURF_ID = s.PICK_SURF_ID;
                 `;
 
                 db.all(query, [], (err, rows) => {

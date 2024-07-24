@@ -147,17 +147,26 @@ const Page = ({ params }) => {
                       <table className="min-w-full bg-gray-800 border border-gray-600 text-white">
                         <thead className="text-center">
                           <tr className="bg-gray-700">
-                            <th className="py-2 px-4 border-b border-gray-600">Surf Name</th>
-                            <th className="py-2 px-4 border-b border-gray-600">Pick Depth</th>
-                            <th className="py-2 px-4 border-b border-gray-600">Origin Data Source</th>
+                          <th className="py-2 px-4 border-b border-gray-600">PICK SURF ID</th>
+                          <th className="py-2 px-4 border-b border-gray-600">SURF NAME</th>
+                          <th className="py-2 px-4 border-b border-gray-600">Data Source</th>
+                          <th className="py-2 px-4 border-b border-gray-600">PICK OBS NO</th>
+                          <th className="py-2 px-4 border-b border-gray-600">PICK DEPTH</th>
+                          <th className="py-2 px-4 border-b border-gray-600">PICK CONF FACT</th>
+                            
+                     
+                           
                           </tr>
                         </thead>
                         <tbody className="text-center">
                           {combinedPicks.map((pick, index) => (
                             <tr key={index} className="bg-gray-800">
-                              <td className="py-2 px-4 border-b border-gray-600">{pick.LOCAL_NAME || pick.PICK_SURF_ID}</td>
+                              <td className="py-2 px-4 border-b border-gray-600">{pick.PICK_SURF_ID}</td>
+                              <td className="py-2 px-4 border-b border-gray-600">{pick.PICK_SURF_NAME || pick.PICK_SURF_ID}</td>
+                              <td className="py-2 px-4 border-b border-gray-600">{pick.DATA_SOURCE}</td>
+                              <td className="py-2 px-4 border-b border-gray-600">{pick.PICK_OBS_NO}</td>
                               <td className="py-2 px-4 border-b border-gray-600">{typeof pick.PICK_DEPTH === 'number' ? pick.PICK_DEPTH.toFixed(2) : 'N/A'}</td>
-                              <td className="py-2 px-4 border-b border-gray-600">{pick.ORIGINAL_DATA_SOURCE}</td>
+                              <td className="py-2 px-4 border-b border-gray-600">{pick.PICK_CONF_FACT}</td>
                             </tr>
                           ))}
                         </tbody>
@@ -187,7 +196,7 @@ const Page = ({ params }) => {
                           <th className="py-2 px-4 border-b border-gray-600">TOP DEPTH</th>
                           <th className="py-2 px-4 border-b border-gray-600">BASE DEPTH</th>
 
-                          <th className="py-2 px-4 border-b border-gray-600">PERFORATION</th>
+                          <th className="py-2 px-4 border-b border-gray-600">SERVICE NAME</th>
                         </tr>
                       </thead>
                       <tbody className="text-center">
@@ -197,7 +206,7 @@ const Page = ({ params }) => {
                             <td className="py-2 px-4 border-b border-gray-600">{log.TOP_DEPTH.toFixed(2)}</td>
                             <td className="py-2 px-4 border-b border-gray-600">{log.BASE_DEPTH.toFixed(2)}</td>
                            
-                            <td className="py-2 px-4 border-b border-gray-600">{log.PERFORATION}</td>
+                            <td className="py-2 px-4 border-b border-gray-600">{log.SERVICE_NAME}</td>
                           </tr>
                         ))}
                       </tbody>
