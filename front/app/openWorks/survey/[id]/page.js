@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { fetchSurveyById } from '@/redux/slices/surveySlice';
 import { fetchSurveyHdrById } from '@/redux/slices/surveyHdrSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,10 +16,9 @@ const Page = ({ params }) => {
     if (params.id) {
       dispatch(fetchSurveyById(params.id));
       dispatch(fetchSurveyHdrById(params.id));
-      dispatch(fetchWellById(params.id))
+      dispatch(fetchWellById(params.id));
     }
   }, [dispatch, params.id]);
-
 
   if (status === 'loading' || statusHdr === 'loading') {
     return <div className="text-center text-gray-600">Loading...</div>;
@@ -29,7 +28,7 @@ const Page = ({ params }) => {
     return <div className="text-center text-red-600">Error: {error || errorHdr}</div>;
   }
 
-  console.log(singleWell)
+  console.log(singleWell);
 
   return (
     <div className="p-24">
@@ -37,6 +36,11 @@ const Page = ({ params }) => {
         <Link href="/openWorks/wellHeaders/">
           <p className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center">
             Volver a OpenWorks
+          </p>
+        </Link>
+        <Link href={`/openWorks/wellHeaders/${params.id}`}>
+          <p className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-center mt-4">
+            Volver al Pozo Previo
           </p>
         </Link>
       </div>
@@ -62,11 +66,12 @@ const Page = ({ params }) => {
               <th className="py-2 px-4 border-b">MAX_LATERAL_DISTANCE</th>
             </tr>
           </thead>
+          
           <tbody>
             {singleSurveyHdr.map((survey, i) => (
               <tr key={i} className={`bg-${i % 2 === 0 ? 'white' : 'gray-50'} text-center`}>
                 <td className="py-2 px-4 border-b">
-                  <Link href={`/openWorks/singleSurvey/${encodeURIComponent(survey.SURVEY_NAME)}`}>
+                <Link href={`/openWorks/singleSurvey/${encodeURIComponent(survey.SURVEY_NAME)}/${encodeURIComponent(survey.WELL_ID)}`}>
                     <p className="text-blue-600 hover:underline">{survey.SURVEY_NAME}</p>
                   </Link>
                 </td>

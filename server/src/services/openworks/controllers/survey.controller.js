@@ -1,5 +1,4 @@
 require("dotenv").config();
-
 const sqlite3 = require("sqlite3").verbose();
 
 // Función para obtener todas las encuestas
@@ -98,6 +97,48 @@ exports.getSurveyByName = (req, res) => {
                 res
                   .status(404)
                   .json({ error: "No se encontraron encuestas con el nombre dado" });
+              }
+            }
+
+            db.close((err) => {
+              if (err) {
+                console.error("Error al cerrar la base de datos", err.message);
+              }
+            });
+          }
+        );
+      }
+    }
+  );
+};
+
+// Función para obtener todas las encuestas con un nombre dado y un ID de pozo, ordenadas por MEASURED_DEPTH
+exports.getSurveyByNameAndWellId = (req, res) => {
+  const surveyName = req.params.surveyName;
+  const wellId = req.params.wellId;
+
+  const db = new sqlite3.Database(
+    process.env.DB_PATH_NEUQUINA_REG,
+    sqlite3.OPEN_READWRITE,
+    (err) => {
+      if (err) {
+        console.error("Error al abrir la base de datos", err.message);
+        res.status(500).json({ error: "Error al abrir la base de datos" });
+      } else {
+        db.all(
+          "SELECT * FROM DIR_SURVEY_PT WHERE SURVEY_NAME = ? AND WELL_ID = ? ORDER BY MEASURED_DEPTH ASC",
+          [surveyName, wellId],
+          (err, rows) => {
+            if (err) {
+              console.error("Error al ejecutar la consulta", err.message);
+              res.status(500).json({ error: "Error al ejecutar la consulta" });
+            } else {
+              if (rows.length > 0) {
+                res.json(rows);
+              } else {
+                res
+                  .status(404)
+                  .json({ error: "No se encontraron encuestas con el nombre y el ID del pozo dados" });
               }
             }
 

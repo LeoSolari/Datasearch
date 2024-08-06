@@ -7,11 +7,11 @@ export default {
 
     SolutionTitle: "¿Qué Venimos A Solucionar?",
     SolutionSearchTitle: "Busqueda eficiente.",
-    SolutionSearchText: "Mejora la eficiencia de las consultas de búsqueda mediante la indexación adecuada de campos relevantes en la base de datos. Además, considera el uso de bases de datos NoSQL para consultas rápidas y escalables.",
+    SolutionSearchText: "Facilitará y hará más cómodo realizar búsquedas relevantes al implementar una indexación efectiva en los campos clave de la base de datos. Además, se utiliza para obtener resultados rápidos y escalables.",
     SolutionInfoTitle: "Informacion en un solo lugar",
     SolutionInfoText: "Implementa un sistema de almacenamiento en caché para los resultados de búsqueda frecuentes. Esto reduce el tiempo de respuesta al mostrar resultados previamente solicitados, mejorando la velocidad de búsqueda para los usuarios.",
     SolutionIntuitionTitle:"Intuitiva y accesible",
-    SolutionIntuitionText:"Utiliza técnicas como la carga perezosa (lazy loading) o la paginación infinita para cargar resultados de búsqueda a medida que el usuario se desplaza por la página. Esto mejora la experiencia del usuario al evitar tiempos de espera prolongados durante la carga inicial de resultados.",
+    SolutionIntuitionText:"El sistema es fácil de usar, ofrece acceso a una gran cantidad de datos y permite su manipulación y modificación de manera sencilla, mejorando significativamente la experiencia del usuario.",
     
     DashboardTitle: "Ver dashboard",
     DashboardText: "Dashboard de permisos de administrador para revisar rol y permisos de los usuarios asignados.",

@@ -8,4 +8,6 @@ router.get("/", logCurveController.getAllLogCurves);
 // Ruta para obtener un pozo individual por su ID
 router.get("/:logId", logCurveController.getAllLogCurvesById);
 
+router.get("/name/:logName", logCurveController.getLogCurvesByName);
+
 module.exports = router;

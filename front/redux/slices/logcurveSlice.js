@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// Acción asincrónica para obtener pozos
+// Acción asincrónica para obtener todas las log curves
 export const fetchlogCurve = createAsyncThunk(
   "logCurve/getLogCurve",
   async () => {
@@ -10,7 +10,7 @@ export const fetchlogCurve = createAsyncThunk(
   }
 );
 
-// Acción asincrónica para obtener un pozo por su LOG_CURVE_ID
+// Acción asincrónica para obtener una log curve por su LOG_CURVE_ID
 export const fetchLogCurveById = createAsyncThunk(
   "logcurve/getLogCurveById",
   async (logId) => {
@@ -21,17 +21,34 @@ export const fetchLogCurveById = createAsyncThunk(
   }
 );
 
-// Slice para el estado de los pozos
+// Acción asincrónica para buscar log curves por LOG_CRV_NAME
+export const searchLogCurveByName = createAsyncThunk(
+  "logcurve/searchLogCurveByName",
+  async (name) => {
+    const response = await axios.get(
+      `http://localhost:4000/api/logCurve/name/${name}`
+    );
+    return response.data;
+  }
+);
+
+// Slice para el estado de las log curves
 export const logCurveSlice = createSlice({
   name: "logCurve",
   initialState: {
     logs: [],
-    singleLog: null, 
+    singleLog: null,
+    headerlogs: [],
     fetchLogsStatus: "idle",
     fetchSingleLogStatus: "idle",
+    searchStatus: "idle",
     error: null,
   },
-  reducers: {},
+  reducers: {
+    clearLogCurveData: (state) => {
+      state.headerlogs = [];
+    },
+  },
   extraReducers: (builder) => {
     builder
       // Para fetchlogCurve
@@ -57,8 +74,22 @@ export const logCurveSlice = createSlice({
       .addCase(fetchLogCurveById.rejected, (state, action) => {
         state.fetchSingleLogStatus = "failed";
         state.error = action.error.message;
+      })
+      // Para searchLogCurveByName
+      .addCase(searchLogCurveByName.pending, (state) => {
+        state.searchStatus = "loading";
+      })
+      .addCase(searchLogCurveByName.fulfilled, (state, action) => {
+        state.searchStatus = "succeeded";
+        state.headerlogs = action.payload;
+      })
+      .addCase(searchLogCurveByName.rejected, (state, action) => {
+        state.searchStatus = "failed";
+        state.error = action.error.message;
       });
   },
 });
+
+export const { clearLogCurveData } = logCurveSlice.actions;
 
 export default logCurveSlice.reducer;

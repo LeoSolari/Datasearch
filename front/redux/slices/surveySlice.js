@@ -1,21 +1,25 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+// Acción asincrónica para obtener una encuesta por nombre y wellId
+export const fetchSurveyByNameAndWellId = createAsyncThunk(
+  'survey/fetchSurveyByNameAndWellId',
+  async ({ surveyName, wellId }) => {
+    const response = await axios.get(`http://localhost:4000/api/surveys/${encodeURIComponent(surveyName)}/${encodeURIComponent(wellId)}`);
+    return response.data;
+  }
+);
+
+// Otras acciones asincrónicas
 export const fetchSurvey = createAsyncThunk("survey/getSurvey", async () => {
-  const response = await axios.get(
-    /*"https://datasearch-server-1.onrender.com/api/surveys" */
-    "http://localhost:4000/api/surveys"
-  );
+  const response = await axios.get("http://localhost:4000/api/surveys");
   return response.data;
 });
 
-// Acción asincrónica para obtener un pozo por su Survey_ID
 export const fetchSurveyById = createAsyncThunk(
   "surveys/getSurveyById",
   async (surveyId) => {
-    const response = await axios.get(
-      `http://localhost:4000/api/surveys/id/${surveyId}`
-    );
+    const response = await axios.get(`http://localhost:4000/api/surveys/id/${surveyId}`);
     return response.data;
   }
 );
@@ -23,9 +27,15 @@ export const fetchSurveyById = createAsyncThunk(
 export const fetchSurveyByName = createAsyncThunk(
   "surveys/getSurveyByName",
   async (surveyName) => {
-    const response = await axios.get(
-      `http://localhost:4000/api/surveys/name/${encodeURIComponent(surveyName)}`
-    );
+    const response = await axios.get(`http://localhost:4000/api/surveys/name/${encodeURIComponent(surveyName)}`);
+    return response.data;
+  }
+);
+
+export const fetchSurveyByWellId = createAsyncThunk(
+  "surveys/getSurveyByWellId",
+  async (wellId) => {
+    const response = await axios.get(`http://localhost:4000/api/surveys/well/${wellId}`);
     return response.data;
   }
 );
@@ -68,9 +78,31 @@ export const surveySlice = createSlice({
       })
       .addCase(fetchSurveyByName.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.singleSurvey = action.payload; // Assuming the payload structure is similar
+        state.singleSurvey = action.payload;
       })
       .addCase(fetchSurveyByName.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(fetchSurveyByWellId.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchSurveyByWellId.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.singleSurvey = action.payload;
+      })
+      .addCase(fetchSurveyByWellId.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(fetchSurveyByNameAndWellId.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchSurveyByNameAndWellId.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.singleSurvey = action.payload;
+      })
+      .addCase(fetchSurveyByNameAndWellId.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       });

@@ -11,4 +11,6 @@ router.get("/id/:surveyId", surveyController.getSurveyById);
 // Ruta para obtener una encuesta por su nombre
 router.get("/name/:surveyName", surveyController.getSurveyByName);
 
+router.get('/:surveyName/:wellId', surveyController.getSurveyByNameAndWellId);
+
 module.exports = router;

@@ -24,7 +24,7 @@ const RouteLinks = () => {
               position
               fadeSide="left"
               /*where="/dashboard"*/
-              where="/"
+              where="openWorks/picks"
             />
           </div>
 
@@ -62,7 +62,20 @@ const RouteLinks = () => {
               where="/openWorks/wellHeaders"
             />
           </div>
+         
+          </div>
+        
         </div>
+        <div className="flex pt-8">
+            <HomeLinks
+              buttonTitle="ir a log curve"
+              /*
+                pText={texts.DashboardText}
+              */
+              fadeSide="left"
+              position
+              where="/openWorks/logcurve"
+            />
       </div>
     </div>
   );

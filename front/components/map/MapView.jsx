@@ -1,10 +1,11 @@
+// MapView.jsx
 "use client";
 import { useEffect, useState } from "react";
-import { MapContainer, TileLayer, useMap } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
-import shp from 'shpjs'; // Asegúrate de que shpjs está instalado
+import shp from 'shpjs';
 import L from 'leaflet';
 
 const MapView = ({ markers, shapefileUrl }) => {
@@ -21,44 +22,33 @@ const MapView = ({ markers, shapefileUrl }) => {
   };
 
   useEffect(() => {
-    console.log("Shapefile URL changed:", shapefileUrl); // Agrega esta línea para verificar los cambios
-  
     const fetchShapefile = async () => {
       if (!shapefileUrl || !map) return;
-    
+
       const correctedShapefileUrl = `http://localhost:4000${shapefileUrl}`;
-      console.log("Fetching shapefile from:", correctedShapefileUrl); // Verifica la URL en consola
-    
+
       try {
         const response = await fetch(correctedShapefileUrl);
         if (!response.ok) {
           throw new Error('Failed to fetch shapefile');
         }
-    
+
         const arrayBuffer = await response.arrayBuffer();
         const geojson = await shp(arrayBuffer);
-    
-        console.log("GeoJSON data:", geojson); // Verifica el contenido del GeoJSON
-    
-        // Limpia el mapa antes de agregar nuevos datos
+
         if (geoJsonLayer) {
           map.removeLayer(geoJsonLayer);
         }
-    
+
         const newGeoJsonLayer = L.geoJSON(geojson).addTo(map);
         setGeoJsonLayer(newGeoJsonLayer);
       } catch (error) {
         console.error("Error loading shapefile:", error);
       }
     };
-    
 
-  
     fetchShapefile();
-  }, [shapefileUrl, map]);
-  if (!markers || markers.length === 0) {
-    return <div>No hay marcadores disponibles</div>;
-  }
+  }, [shapefileUrl, map, geoJsonLayer]);
 
   return (
     <MapContainer
@@ -72,8 +62,12 @@ const MapView = ({ markers, shapefileUrl }) => {
         noWrap={true}
         minZoom={3}
       />
-      
       <MapInitializer />
+      {markers.map((marker, index) => (
+        <Marker key={index} position={[marker.lat, marker.long]}>
+          <Popup>{marker.uwi}</Popup>
+        </Marker>
+      ))}
     </MapContainer>
   );
 };

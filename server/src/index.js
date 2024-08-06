@@ -19,6 +19,7 @@ const archivoRoutes = require("./services/archivoDigital/archivo.route.js");
 const userRoutes = require("./routes/users.routes.js");
 const combinedPicksRoutes = require("../src/services/openworks/routes/combinedPicks.route");
 const indexRoutes = require("./routes/index.routes.js");
+const seisRoutes = require('../src/services/openworks/routes/seisData.route.js');
 
 const app = express();
 app.use(express.json());
@@ -90,6 +91,7 @@ app.use("/api/picks", surfacePicksRoutes);
 app.use("/api/mnemonicgroupmember", mnemonicgroupmemberRoutes);
 app.use("/api/crvNames", crvNameRoutes);
 app.use("/api/archivos", archivoRoutes);
+app.use('/api', seisRoutes);
 
 // Iniciar el servidor
 const PORT = process.env.PORT || 4000;

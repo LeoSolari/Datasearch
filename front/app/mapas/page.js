@@ -1,14 +1,11 @@
-// Mapas.js
-
+// Page.js
 "use client";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import dynamic from "next/dynamic";
 import { fetchWells } from "@/redux/slices/wellSlice";
-import Link from "next/link";
 import es from "@/public/es";
 import en from "@/public/en";
-import { useSelector } from "react-redux";
 import UploadShapefile from "@/components/map/uploadShapeFile";
 
 const MapView = dynamic(() => import("@/components/map/MapView"), {
@@ -19,6 +16,7 @@ const Page = () => {
   const dispatch = useDispatch();
   const [wellMarkers, setWellMarkers] = useState([]);
   const [shapefileUrl, setShapefileUrl] = useState("");
+  const [showMarkers, setShowMarkers] = useState(false);
   const isSpanish = useSelector((state) => state.language.isSpanish);
 
   const texts = isSpanish ? es : en;
@@ -40,52 +38,34 @@ const Page = () => {
   }, [dispatch]);
 
   const handleUpload = (url) => {
-    console.log("Shapefile URL:", url); // Agrega esta línea para verificar el URL
     setShapefileUrl(url);
+  };
+
+  const toggleMarkers = () => {
+    setShowMarkers((prevShowMarkers) => !prevShowMarkers);
   };
 
   return (
     <div className="mx-auto h-full py-24 bg-gray-900 text-blue-200">
       <div className="text-center">
         <h1 className="text-3xl font-bold mb-4">Mapa</h1>
+        <UploadShapefile onUpload={handleUpload} />
+      <div className="text-center mt-4">
+        <button
+          onClick={toggleMarkers}
+          className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 transition duration-200"
+        >
+          {showMarkers ? "Ocultar Marcadores" : "Mostrar Marcadores"}
+        </button>
+      </div>
+
         <p className="text-lg mb-4">{texts.MapCoords}</p>
       </div>
 
       <div className="flex justify-around bg-white rounded-lg shadow-md overflow-hidden">
-        <MapView markers={wellMarkers} shapefileUrl={shapefileUrl} />
-        {
-          /*
-           <ul className="flex justify-between flex-col text-center">
-          <li className="text-gray-700 hover:underline underline-offset-8">
-            <Link href={"/openWorks/wellHeaders/203"}>
-              {texts.MapGoToWell}: AR580121000100
-            </Link>
-          </li>
-          <li className="text-gray-700 hover:underline underline-offset-8">
-            <Link href={"/openWorks/wellHeaders/1881"}>
-              {texts.MapGoToWell}: AR580352101100
-            </Link>
-          </li>
-          <li className="text-gray-700 hover:underline underline-offset-8">
-            <Link href={"/openWorks/wellHeaders/58"}>
-              {texts.MapGoToWell}: AR580061043200
-            </Link>
-          </li>
-          <li className="text-gray-700 hover:underline underline-offset-8">
-            <Link href={"/openWorks/wellHeaders/75"}>
-              {texts.MapGoToWell}: AR580070000100
-            </Link>
-          </li>
-          <li className="text-gray-700 hover:underline underline-offset-8">
-            <Link href={"/openWorks/wellHeaders/605"}>
-              {texts.MapGoToWell}: AR620033000200
-            </Link>
-          </li>
-        </ul>
-        */
-        }
+        <MapView markers={showMarkers ? wellMarkers : []} shapefileUrl={shapefileUrl} />
       </div>
-      <UploadShapefile onUpload={handleUpload} />
+      
     </div>
   );
 };
